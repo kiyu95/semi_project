@@ -1,0 +1,351 @@
+a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.admin-main {
+    position: relative;
+    top: 0px;
+    bottom: 0px;
+    overflow: hidden;
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    position: relative;
+    top: 0px;
+    bottom: 0px;
+    overflow: hidden;
+}
+
+.header-title {
+    width: 400px;
+    height: 100px;
+    background-color: rgba(100,100,100,1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-name {
+    color: #FFE150;
+
+    font-weight: bold;
+    font-size: 52px;
+    opacity: 1;
+}
+
+.header-nevigation{
+    width: 200px;
+    height: 100px;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 1720px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nevigation-logout {
+    font-size: 32px;
+    opacity: 1;
+}
+
+.menu {
+    width: 400px;
+    height: 900px;
+    background: rgba(100,100,100,1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+
+.menu-box1 {
+    width: 400px;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.site-management {
+    color: rgba(255,255,255,1);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.menu-box2 {
+    width: 400px;
+    height: 50px;
+    background: rgba(51,51,51,1);
+    opacity: 1;
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.dash-board {
+    border: 0;
+    width: 300px;
+    color: rgba(255,255,255,1);
+    background-color: rgba(51,51,51,1);
+
+    top: 0px;
+    left: 100px;
+    font-weight: bold;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+}
+
+.dash-board-img-box {
+    width: 100px;
+    height: 50px;
+    opacity: 1;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+
+.bi-grid {
+    font-size: 40px;
+    color: rgba(255,255,255,1);
+    opacity: 1;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.menu-box3 {
+    width: 400px;
+    height: 50px;
+    opacity: 1;
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.user-management {
+    border: 0;
+    width: 300px;
+    color: rgba(255,255,255,1);
+    background-color: rgba(100,100,100,1);
+
+    top: 0px;
+    left: 100px;
+    font-weight: bold;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+}
+
+.user-management:hover {
+    color: rgba(51,51,51,1);
+}
+
+.user-management-img-box {
+    width: 100px;
+    height: 50px;
+    opacity: 1;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+
+.bi-person {
+    font-size: 40px;
+    color: rgba(255,255,255,1);
+    opacity: 1;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.menu-box4 {
+    width: 400px;
+    height: 50px;
+    opacity: 1;
+    position: absolute;
+    top: 150px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.notice {
+    border: 0;
+    width: 300px;
+    color: rgba(255,255,255,1);
+    background-color: rgba(100,100,100,1);
+
+    top: 0px;
+    left: 100px;
+    font-weight: bold;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+}
+
+.notice-img-box {
+    width: 100px;
+    height: 50px;
+    opacity: 1;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+
+.bi-megaphone {
+    font-size: 40px;
+    color: rgba(255,255,255,1);
+    opacity: 1;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.menu-box5 {
+    width: 400px;
+    height: 50px;
+    opacity: 1;
+    position: absolute;
+    top: 200px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.question {
+    border: 0;
+    width: 300px;
+    color: rgba(255,255,255,1);
+    background-color: rgba(100,100,100,1);
+
+    top: 0px;
+    left: 100px;
+    font-weight: bold;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+}
+
+.question-img-box {
+    width: 100px;
+    height: 50px;
+    opacity: 1;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+
+.bi-chat {
+    font-size: 40px;
+    color: rgba(255,255,255,1);
+    opacity: 1;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.menu-box6 {
+    width: 400px;
+    height: 50px;
+    opacity: 1;
+    position: absolute;
+    top: 250px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.content-management {
+    border: 0;
+    width: 300px;
+    color: rgba(255,255,255,1);
+    background-color: rgba(100,100,100,1);
+
+    top: 0px;
+    left: 100px;
+    font-weight: bold;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+}
+
+.content-management-img-box {
+    width: 100px;
+    height: 50px;
+    opacity: 1;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+
+.bi-gear {
+    font-size: 40px;
+    color: rgba(255,255,255,1);
+    opacity: 1;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.content {
+    width: 100%;
+    height: 900px;
+    background: rgba(163,163,163,0.20000000149011612);
+    opacity: 1;
+    position: absolute;
+    top: 100px;
+    left: 400px;
+    overflow: hidden;
+}
