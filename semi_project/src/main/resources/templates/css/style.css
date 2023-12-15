@@ -10,6 +10,8 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 }
 
 .admin-main {
+    font-family: 'Do Hyeon', sans-serif;
+
     position: relative;
     top: 0px;
     bottom: 0px;
@@ -40,11 +42,16 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 }
 
 .title-name {
+    font-family: 'Black Han Sans', sans-serif;
     color: #FFE150;
 
-    font-weight: bold;
+
     font-size: 52px;
     opacity: 1;
+}
+
+.title-name-admin {
+    color: rgba(255,255,255,1);
 }
 
 .header-nevigation{
@@ -67,7 +74,7 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 
 .menu {
     width: 400px;
-    height: 900px;
+    height: 980px;
     background: rgba(100,100,100,1);
     opacity: 1;
     position: relative;
@@ -89,7 +96,7 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 }
 
 .site-management {
-    color: rgba(255,255,255,1);
+    color: #17A1FA;
     position: relative;
     top: 0px;
     left: 0px;
@@ -116,11 +123,9 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     border: 0;
     width: 300px;
     color: rgba(255,255,255,1);
-    background-color: rgba(51,51,51,1);
 
     top: 0px;
     left: 100px;
-    font-weight: bold;
     font-size: 20px;
     opacity: 1;
     text-align: left;
@@ -163,18 +168,12 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     border: 0;
     width: 300px;
     color: rgba(255,255,255,1);
-    background-color: rgba(100,100,100,1);
 
     top: 0px;
     left: 100px;
-    font-weight: bold;
     font-size: 20px;
     opacity: 1;
     text-align: left;
-}
-
-.user-management:hover {
-    color: rgba(51,51,51,1);
 }
 
 .user-management-img-box {
@@ -214,11 +213,9 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     border: 0;
     width: 300px;
     color: rgba(255,255,255,1);
-    background-color: rgba(100,100,100,1);
 
     top: 0px;
     left: 100px;
-    font-weight: bold;
     font-size: 20px;
     opacity: 1;
     text-align: left;
@@ -261,11 +258,9 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     border: 0;
     width: 300px;
     color: rgba(255,255,255,1);
-    background-color: rgba(100,100,100,1);
 
     top: 0px;
     left: 100px;
-    font-weight: bold;
     font-size: 20px;
     opacity: 1;
     text-align: left;
@@ -308,11 +303,9 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     border: 0;
     width: 300px;
     color: rgba(255,255,255,1);
-    background-color: rgba(100,100,100,1);
 
     top: 0px;
     left: 100px;
-    font-weight: bold;
     font-size: 20px;
     opacity: 1;
     text-align: left;
@@ -341,11 +334,54 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 
 .content {
     width: 100%;
-    height: 900px;
+    height: 980px;
     background: rgba(163,163,163,0.20000000149011612);
     opacity: 1;
     position: absolute;
     top: 100px;
     left: 400px;
     overflow: hidden;
+}
+
+.content-user-management {
+    width: 1440px;
+    height: 900px;
+    background-color: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    overflow: hidden;
+}
+
+.content-user-management-title-box {
+    width: 100%;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+
+.content-user-management-title-name-box {
+    width: 150px;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-user-management-title-name {
+    color: rgba(0,0,0,1);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    font-size: 20px;
+    opacity: 1;
 }
