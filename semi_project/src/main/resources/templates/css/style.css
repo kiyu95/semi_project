@@ -4,13 +4,14 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 }
 
 * {
+    font-family: 'Do Hyeon', sans-serif;
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 .admin-main {
-    font-family: 'Do Hyeon', sans-serif;
 
     position: relative;
     top: 0px;
@@ -384,4 +385,22 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     left: 0px;
     font-size: 20px;
     opacity: 1;
+}
+
+.content-user-management-table {
+    width: 100%;
+    height: 800px;
+    opacity: 1;
+    position: relative;
+}
+
+.content-user-management-table-header {
+    width: 100%;
+    height: 100px;
+}
+
+.content-user-management-table-body {
+    /*width: 100%;*/
+    height: 100px;
+    text-align: center;
 }
