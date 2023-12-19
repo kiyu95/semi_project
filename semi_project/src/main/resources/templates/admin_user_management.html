@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>userManagement</title>
 
-    <link rel="stylesheet" href="/templates/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,7 @@
     <script src="js/admin.js"></script>
 </head>
 <body>
-    <div id="header"></div>
+    <div th:insert="/admin_main.html :: mainFragment"></div>
 
     <div class="content">
         <div class="content-user-management">
@@ -24,33 +24,198 @@
                 </div>
             </div>
 
-            <table class="content-user-management-table">
-                <tr class="content-user-management-table-header">
-                    <th>체크</th>
-                    <th>회원 코드</th>
-                    <th>이메일</th>
-                    <th>가입일</th>
-                </tr>
-                <tr class="content-user-management-table-body" th:each="user : ${userList}">
-                    <td><input type="checkbox"></td>
-                    <td th:text="${user.code}"></td>
-                    <td th:text="${user.email}"></td>
-                    <td th:text="${user.regist}"></td>
-                </tr>
+            <table class="content-user-management-table" id="userTable">
+                <thead>
+                    <tr class="content-user-management-table-header">
+                        <th>체크</th>
+                        <th>회원 코드</th>
+                        <th>이메일</th>
+                        <th>가입일</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="content-user-management-table-body" th:each="user : ${userList}">
+                        <td><input type="checkbox"></td>
+                        <td th:text="${user.code}"></td>
+                        <td th:text="${user.email}"></td>
+                        <td th:text="${user.regist}"></td>
+                    </tr>
+                </tbody>
             </table>
+
+            <div class="paging">
+                <i class="bi-chevron-double-left" id="firstPage"></i>
+                <i class="bi-chevron-left" id="prevPage"></i>
+                <div class="pages">
+                    <span class="active">1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                </div>
+                <i class="bi-chevron-right" id="nextPage"></i>
+                <i class="bi-chevron-double-right" id="lastPage"></i>
+            </div>
         </div>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            fetch("admin_main.html")
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header').innerHTML = data;
-                })
-                .catch(error => console.error('파일을 로드하는 중 오류가 발생하였습니다.', error));
+        const countPerPage = 6; // 페이지 당 데이터 건수
+        const showPageCnt = 5; // 화면에 보일 페이지 번호 개수
+
+        let currentPage = 1; // 초기 페이지 설정
+
+        function renderPagination() {
+            const totalRows = document.querySelectorAll('.content-user-management-table-body').length;
+            const totalPage = Math.ceil(totalRows / countPerPage);
+
+            let pageGroup = Math.ceil(currentPage / showPageCnt);
+
+            const pagesDiv = document.querySelector('.pages');
+            pagesDiv.innerHTML = ''; // 기존 페이지 번호 초기화
+
+            let first = pageGroup * showPageCnt - (showPageCnt - 1);
+            let last = pageGroup * showPageCnt;
+
+            if (last > totalPage) {
+                last = totalPage;
+            }
+
+            for (let i = first; i <= last; i++) {
+                const pageSpan = document.createElement('span');
+                pageSpan.textContent = i;
+                pageSpan.addEventListener('click', function () {
+                    currentPage = i;
+                    renderContent(currentPage); // 해당 페이지의 데이터를 표시하는 함수 호출
+                    renderPagination(); // 페이지네이션 다시 렌더링
+                });
+                if (i === currentPage) {
+                    pageSpan.classList.add('active');
+                }
+                pagesDiv.appendChild(pageSpan);
+            }
+        }
+
+        function renderContent(page) {
+            const startIdx = (page - 1) * countPerPage;
+            const endIdx = startIdx + countPerPage;
+            const userRows = document.querySelectorAll('.content-user-management-table-body');
+
+            userRows.forEach((row, idx) => {
+                if (idx >= startIdx && idx < endIdx) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // 페이지 로드 시 초기화 및 페이지네이션 렌더링
+        document.addEventListener('DOMContentLoaded', function () {
+            renderContent(currentPage);
+            renderPagination();
+        });
+
+        // 이전 페이지로 이동하는 이벤트 리스너
+        document.getElementById('prevPage').addEventListener('click', function () {
+            if (currentPage > 1) {
+                currentPage--;
+                renderContent(currentPage);
+                renderPagination();
+            }
+        });
+
+        // 다음 페이지로 이동하는 이벤트 리스너
+        document.getElementById('nextPage').addEventListener('click', function () {
+            const totalRows = document.querySelectorAll('.content-user-management-table-body').length;
+            const totalPage = Math.ceil(totalRows / countPerPage);
+            if (currentPage < totalPage) {
+                currentPage++;
+                renderContent(currentPage);
+                renderPagination();
+            }
+        });
+
+        // 처음 페이지로 이동하는 이벤트 리스너
+        document.getElementById('firstPage').addEventListener('click', function () {
+            currentPage = 1;
+            renderContent(currentPage);
+            renderPagination();
+        });
+
+        // 마지막 페이지로 이동하는 이벤트 리스너
+        document.getElementById('lastPage').addEventListener('click', function () {
+            const totalRows = document.querySelectorAll('.content-user-management-table-body').length;
+            const totalPage = Math.ceil(totalRows / countPerPage);
+            currentPage = totalPage;
+            renderContent(currentPage);
+            renderPagination();
         });
     </script>
+
+
+    <!--    <script>-->
+<!--        const countPerPage = 7; // 페이지 당 데이터 건수-->
+<!--        const showPageCnt = 5; // 화면에 보일 페이지 번호 개수-->
+
+<!--        let totalPage = Math.ceil(tbody / countPerPage) // 총 페이지 수, Math.cell : 소수값이 존재할 때 올림-->
+<!--        let pageGroup = Math.ceil(currentPage / showPageCnt)-->
+<!--    /**************************************************************************************************/-->
+<!--        -->
+<!--        const table = document.getElementById("userTable");-->
+<!--        const tbody = table.tBodies[0].rows.length; // 리스트 전체 갯수-->
+
+<!--        let currentPage = 1; // 현재 페이지 초기화-->
+
+<!--        $(function () {-->
+<!--            const totalData = table.tBodies-->
+
+<!--            setTable(1);-->
+<!--            setPaging(1);-->
+
+<!--        });-->
+
+<!--        $(document).on('click', 'div.paging>div.pages>span', function() {-->
+<!--            if (!$(this).hasClass('active')) {-->
+<!--                $(this).parent().find('span.active').removeClass('active');-->
+<!--                $(this).addClass('active');-->
+
+<!--                setTable(Number($(this).text()));-->
+<!--            }-->
+<!--        });-->
+
+<!--        function pagination(currentPage) {-->
+<!--            const countPerPage = 7; // 페이지 당 데이터 건수-->
+<!--            const showPageCnt = 5; // 화면에 보일 페이지 번호 개수-->
+
+<!--            let totalPage = Math.ceil(tbody / countPerPage) // 총 페이지 수, Math.cell : 소수값이 존재할 때 올림-->
+<!--            let pageGroup = Math.ceil(currentPage / showPageCnt) // 페이지 그룹 6/5 = 1.2 -> 2-->
+
+<!--            let last = pageGroup * showPageCnt; // 화면에 보여질 페이지 그룹의 마지막 숫자-->
+<!--            if (last > totalPage) { // 페이지 그룹의 마지막 숫자가 전체 페이지 숫자 보다 클 경우 last = totalPage-->
+<!--                last = totalPage;-->
+<!--            }-->
+<!--            let first = last - (showPageCnt - 1) <= 0 ? 1 : last - (showPageCnt - 1); // 화면에 보여질 페이지 그룹의 첫번째 숫자-->
+<!--            let next = last + 1; // 다음 페이지 그룹-->
+<!--            let prev = first - 1; // 이전 페이지 그룹-->
+
+<!--            const pages = $("#pages");-->
+<!--            pages.empty();-->
+<!--            if (first > 5)-->
+<!--        }-->
+
+<!--    </script>-->
+
+<!--    <script>-->
+<!--        document.addEventListener("DOMContentLoaded", function () {-->
+<!--            fetch("admin_main.html")-->
+<!--                .then(response => response.text())-->
+<!--                .then(data => {-->
+<!--                    document.getElementById('header').innerHTML = data;-->
+<!--                })-->
+<!--                .catch(error => console.error('파일을 로드하는 중 오류가 발생하였습니다.', error));-->
+<!--        });-->
+<!--    </script>-->
 
 </body>
 </html>

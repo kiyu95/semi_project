@@ -4,14 +4,13 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 }
 
 * {
-    font-family: 'Do Hyeon', sans-serif;
-
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 .admin-main {
+    font-family: 'Do Hyeon', sans-serif;
 
     position: relative;
     top: 0px;
@@ -334,6 +333,8 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 }
 
 .content {
+    font-family: 'Do Hyeon', sans-serif;
+
     width: 100%;
     height: 980px;
     background: rgba(163,163,163,0.20000000149011612);
@@ -379,19 +380,28 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 }
 
 .content-user-management-title-name {
-    color: rgba(0,0,0,1);
+    font-size: 30px;
+    color: #17A1FA;
     position: relative;
     top: 0px;
     left: 0px;
-    font-size: 20px;
     opacity: 1;
 }
 
 .content-user-management-table {
-    width: 100%;
-    height: 800px;
+    margin: 0 20px 20px 20px;
+    border-collapse: collapse; /* 테투리 겹치도록 설정 (한줄이 된다) */
+    font-size: 24px;
+    width: 1400px;
+    height: 760px;
     opacity: 1;
     position: relative;
+}
+
+.content-user-management-table th,
+.content-user-management-table td {
+    border: 1px solid black; /* 테두리 두께, 스타일, 색상 설정*/
+    padding: 10px;
 }
 
 .content-user-management-table-header {
@@ -403,4 +413,30 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     /*width: 100%;*/
     height: 100px;
     text-align: center;
+}
+
+.paging {
+    font-size: 30px;
+    width: 100%;
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paging>i,
+.paging>.pages {
+    margin: 0 10px;
+}
+
+.paging>i,
+.pages>span {
+    font-family: 'Roboto', sans-serif;
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+.active {
+    color: #17A1FA;
+    font-weight: bold;
 }
