@@ -12,13 +12,13 @@ import java.util.List;
 import java.util.Objects;
 
 @Controller
-@RequestMapping("/user/*")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("allUsers")
+    @GetMapping("/allUsers")
     public ModelAndView selectAllUser(ModelAndView mv) {
         List<UserSelectDTO> userList = userService.selectAllUser();
 
@@ -26,7 +26,7 @@ public class UserController {
             System.out.println("등록된 유저가 없습니다.");
         }
         mv.addObject("userList", userList);
-        mv.setViewName("/admin_user_management");
+        mv.setViewName("admin_userManagement");
         return mv;
     }
 }

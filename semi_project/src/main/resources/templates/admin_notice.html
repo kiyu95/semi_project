@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>notice</title>
+
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet"/>
+
+    <style>
+        .notice {
+            color: #17A1FA;
+        }
+    </style>
+
+</head>
+<body>
+    <div th:insert="/admin_main.html :: mainFragment"></div>
+
+    <div class="content">
+        <div class="content-notice">
+
+            <!-- 공지사항 제목 -->
+            <div class="content-notice-title-box">
+                <div class="content-notice-title-name-box">
+                    <span class="content-notice-title-name">공지사항</span>
+                </div>
+            </div>
+
+            <!-- 공지사항 테이블 -->
+            <table class="content-notice-table" id="noticeTable">
+                <thead>
+                    <tr class="content-notice-table-header">
+                        <th>체크</th>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>등록일</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="content-notice-table-body" th:each="notice : ${noticeList}">
+                        <td><input type="checkbox"/> </td>
+                        <td th:text="${notice.code}"></td>
+                        <td th:text="${notice.name}"></td>
+                        <td>관리자</td>
+                        <td th:text="${notice.regist}"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- 공지사항 페이지네이션 -->
+        </div>
+    </div>
+
+
+</body>
+</html>

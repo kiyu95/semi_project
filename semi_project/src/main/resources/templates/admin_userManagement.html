@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>userManagement</title>
 
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet"/>
 
-    <script src="js/admin.js"></script>
+    <style>
+        .user-management {
+            color: #17A1FA;
+        }
+    </style>
+
+<!--    <script src="js/admin.js"></script>-->
 </head>
 <body>
     <div th:insert="/admin_main.html :: mainFragment"></div>
@@ -216,6 +222,5 @@
 <!--                .catch(error => console.error('파일을 로드하는 중 오류가 발생하였습니다.', error));-->
 <!--        });-->
 <!--    </script>-->
-
 </body>
 </html>

@@ -10,7 +10,8 @@
 
 
     <mappers>
-        <mapper resource="mapper/admin/adminMapper.xml" />
+        <mapper resource="mapper/admin/AdminMapper.xml" />
+        <mapper resource="mapper/admin/NoticeMapper.xml" />
     </mappers>
 
 </configuration>

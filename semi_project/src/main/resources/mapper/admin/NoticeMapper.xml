@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.semi_project.dao.NoticeDAO">
+
+    <resultMap id="noticeResult" type="com.example.semi_project.dto.NoticeSelectDTO">
+        <id property="code" column="NOTICE_CODE"/>
+        <result property="name" column="NOTICE_NAME"/>
+        <result property="regist" column="REGIST_DATE"/>
+        <result property="status" column="NOTICE_STATUS"/>
+    </resultMap>
+
+    <select id="selectAllNotice" resultMap="noticeResult">
+        SELECT
+            NOTICE_CODE,
+            NOTICE_NAME,
+            REGIST_DATE
+          FROM TBL_NOTICE
+         WHERE NOTICE_STATUS = 'Y'
+    </select>
+</mapper>

@@ -19,7 +19,7 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 }
 
 .header {
-    width: 100%;
+    width: 1920px;
     height: 100px;
     position: relative;
     top: 0px;
@@ -42,6 +42,8 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 }
 
 .title-name {
+    cursor: pointer;
+
     font-family: 'Black Han Sans', sans-serif;
     color: #FFE150;
 
@@ -109,7 +111,6 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 .menu-box2 {
     width: 400px;
     height: 50px;
-    background: rgba(51,51,51,1);
     opacity: 1;
     position: absolute;
     top: 50px;
@@ -332,10 +333,18 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     margin-top: 5px;
 }
 
+/*.non-click {*/
+/*    color: black;*/
+/*}*/
+
+/*.click {*/
+/*    color: #17A1FA;*/
+/*}*/
+
 .content {
     font-family: 'Do Hyeon', sans-serif;
 
-    width: 100%;
+    width: 1520px;
     height: 980px;
     background: rgba(163,163,163,0.20000000149011612);
     opacity: 1;
@@ -345,6 +354,36 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     overflow: hidden;
 }
 
+/* ********** 관리자 페이지 홈  ********** */
+.content-admin-home {
+    width: 1440px;
+    height: 900px;
+    opacity: 1;
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    overflow: hidden;
+}
+
+.admin-home-box {
+    opacity: 1;
+    position: absolute;
+    overflow: hidden;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 중앙에 엘리먼트 중앙을 맞춤, 없을 시 엘리먼트의 좌측 상단이 중앙에 오게된다. */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-home {
+    color: #17A1FA;
+    font-size: 100px;
+}
+
+/* ********** 사용자 관리  ********** */
 .content-user-management {
     width: 1440px;
     height: 900px;
@@ -393,7 +432,6 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     border-collapse: collapse; /* 테투리 겹치도록 설정 (한줄이 된다) */
     font-size: 24px;
     width: 1400px;
-    height: 760px;
     opacity: 1;
     position: relative;
 }
@@ -419,6 +457,8 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     font-size: 30px;
     width: 100%;
     height: 50px;
+    position: absolute;
+    bottom: 20px;
     display: inline-flex;
     align-items: center;
     justify-content: center;

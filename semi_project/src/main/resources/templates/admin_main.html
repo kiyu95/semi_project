@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title>Admin</title>
 
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Roboto&display=swap" rel="stylesheet"/>
 
-    <script src="js/admin.js"></script>
+<!--    <script src="js/admin.js"></script>-->
 
 </head>
 <body>
@@ -19,7 +19,7 @@
       <!-- admin 메인페이지 네비게이션 -->
       <header class="header">
         <div class="header-title">
-          <span class="title-name">학교종 <span class="title-name-admin">Admin</span> </span>
+          <span onclick="location.href='/login/adminLogin'" class="title-name">학교종 <span class="title-name-admin">Admin</span> </span>
         </div>
         <div class="header-nevigation">
           <span class="nevigation-logout">Logout</span>
@@ -40,17 +40,17 @@
                         <i class="bi-grid"></i>
                     </span>
           <div class="dash-board">
-            <a href="#" onmouseover="changeMenuBox2Color()" onmouseout="rollbackMenuBox2Color()">대시보드</a>
+            <a href="/dashBoard/home" onmouseover="changeMenuBox2Color()" onmouseout="rollbackMenuBox2Color()">대시보드</a>
           </div>
         </div>
           <script>
               function changeMenuBox2Color() {
-                  var menuBox = document.querySelector('.menu-box2');
+                  let menuBox = document.querySelector('.menu-box2');
                   menuBox.style.backgroundColor = 'rgba(51,51,51,1)';
               }
 
               function rollbackMenuBox2Color() {
-                  var menuBox = document.querySelector('.menu-box2');
+                  let menuBox = document.querySelector('.menu-box2');
                   menuBox.style.backgroundColor = 'rgba(100,100,100,1)';
               }
           </script>
@@ -61,22 +61,23 @@
                 <i class="bi-person"></i>
             </span>
             <div class="user-management">
-                <a href="user/allUsers" onmouseover="changeMenuBox3Color()" onmouseout="rollbackMenuBox3Color()">사용자 관리</a>
+                <a href="/user/allUsers" onmouseover="changeMenuBox3Color()" onmouseout="rollbackMenuBox3Color()">사용자 관리</a>
             </div>
         </div>
 
         <!-- 사용자 관리 태그에 마우스 올리고 내릴때 menu-box3의 색상 변경 -->
         <script>
             function changeMenuBox3Color() {
-                var menuBox = document.querySelector('.menu-box3');
+                let menuBox = document.querySelector('.menu-box3');
                 menuBox.style.backgroundColor = 'rgba(51,51,51,1)';
             }
 
             function rollbackMenuBox3Color() {
-                var menuBox = document.querySelector('.menu-box3');
+                let menuBox = document.querySelector('.menu-box3');
                 menuBox.style.backgroundColor = 'rgba(100,100,100,1)';
             }
         </script>
+
 
         <!-- 메뉴) 공지사항 -->
         <div class="menu-box4">
@@ -84,18 +85,18 @@
                         <i class="bi-megaphone"></i>
                     </span>
           <div class="notice">
-            <a href="#" onmouseover="changeMenuBox4Color()" onmouseout="rollbackMenuBox4Color()">공지사항</a>
+            <a href="/notice/selectAll" onmouseover="changeMenuBox4Color()" onmouseout="rollbackMenuBox4Color()">공지사항</a>
           </div>
         </div>
 
           <script>
               function changeMenuBox4Color() {
-                  var menuBox = document.querySelector('.menu-box4');
+                  let menuBox = document.querySelector('.menu-box4');
                   menuBox.style.backgroundColor = 'rgba(51,51,51,1)';
               }
 
               function rollbackMenuBox4Color() {
-                  var menuBox = document.querySelector('.menu-box4');
+                  let menuBox = document.querySelector('.menu-box4');
                   menuBox.style.backgroundColor = 'rgba(100,100,100,1)';
               }
           </script>
@@ -106,18 +107,19 @@
                         <i class="bi-chat"></i>
                     </span>
           <div class="question">
-            <a href="#" onmouseover="changeMenuBox5Color()" onmouseout="rollbackMenuBox5Color()">문의 / 건의사항</a>
+            <a href="#" onmouseover="changeMenuBox5Color()" onmouseout="rollbackMenuBox5Color()"
+                class="non-click">문의 / 건의사항</a>
           </div>
         </div>
 
           <script>
               function changeMenuBox5Color() {
-                  var menuBox = document.querySelector('.menu-box5');
+                  let menuBox = document.querySelector('.menu-box5');
                   menuBox.style.backgroundColor = 'rgba(51,51,51,1)';
               }
 
               function rollbackMenuBox5Color() {
-                  var menuBox = document.querySelector('.menu-box5');
+                  let menuBox = document.querySelector('.menu-box5');
                   menuBox.style.backgroundColor = 'rgba(100,100,100,1)';
               }
           </script>
@@ -128,52 +130,39 @@
                         <i class="bi-gear"></i>
                     </span>
           <div class="content-management">
-            <a href="#" onmouseover="changeMenuBox6Color()" onmouseout="rollbackMenuBox6Color()">컨텐츠 관리</a>
+            <a href="#" onmouseover="changeMenuBox6Color()" onmouseout="rollbackMenuBox6Color()"
+                class="non-click">컨텐츠 관리</a>
           </div>
         </div>
 
           <script>
               function changeMenuBox6Color() {
-                  var menuBox = document.querySelector('.menu-box6');
+                  let menuBox = document.querySelector('.menu-box6');
                   menuBox.style.backgroundColor = 'rgba(51,51,51,1)';
               }
 
               function rollbackMenuBox6Color() {
-                  var menuBox = document.querySelector('.menu-box6');
+                  let menuBox = document.querySelector('.menu-box6');
                   menuBox.style.backgroundColor = 'rgba(100,100,100,1)';
               }
           </script>
 
       </div>
-
-      <!-- 메인페이지 컨텐츠 -->
-<!--      <div class="content">-->
-<!--          <div class="content-user-management">-->
-
-<!--              <div class="content-user-management-title-box">-->
-<!--                  <div class="content-user-management-title-name-box">-->
-<!--                      <span class="content-user-management-title-name">회원목록</span>-->
-<!--                  </div>-->
-<!--              </div>-->
-
-<!--              <table class="content-user-management-table">-->
-<!--                  <tr class="content-user-management-table-header">-->
-<!--                      <th>체크</th>-->
-<!--                      <th>회원 코드</th>-->
-<!--                      <th>이메일</th>-->
-<!--                      <th>가입일</th>-->
-<!--                  </tr>-->
-<!--                  <tr class="content-user-management-table-body">-->
-<!--                      <td><input type="checkbox"></td>-->
-<!--                      <td>user_code</td>-->
-<!--                      <td>Email</td>-->
-<!--                      <td>2023.12.25</td>-->
-<!--                  </tr>-->
-<!--              </table>-->
-<!--          </div>-->
-
-<!--      </div>-->
-
     </div>
+
+    <script>
+        const nonClick = document.querySelectorAll(".non-click");
+
+        function handleClick(event) {
+            nonClick.forEach((e) => {
+                e.classList.remove("click");
+            });
+            event.target.classList.add("click");
+        }
+
+        nonClick.forEach((e) => {
+            e.addEventListener("click", handleClick);
+        });
+    </script>
 </body>
 </html>
