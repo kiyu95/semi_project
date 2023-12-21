@@ -2,6 +2,7 @@ package com.example.semi_project.service;
 
 import com.example.semi_project.dao.NoticeDAO;
 import com.example.semi_project.dto.NoticeSelectDTO;
+import com.example.semi_project.dto.SearchNoticeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,4 +22,16 @@ public class NoticeService {
         }
         return noticeList; // noticeDAO.selectALLNotice() 에서 반환된 값 반환
     }
+
+    public List<SearchNoticeDTO> searchNotice() {
+        List<SearchNoticeDTO> searchNotice = noticeDAO.searchNotice();
+
+        return searchNotice;
+    }
+
+//    public List<NoticeSelectDTO> searchNotice() {
+//        List<NoticeSelectDTO> searchNotice = noticeDAO.searchNotice();
+//
+//        return searchNotice;
+//    }
 }

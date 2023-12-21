@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>notice</title>
+
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet"/>
+
+    <style>
+        .notice {
+            color: #17A1FA;
+        }
+    </style>
+
+</head>
+<body>
+<div th:insert="/admin_main.html :: mainFragment"></div>
+
+<div class="content">
+    <div class="content-notice">
+
+        <!-- 공지사항 제목 -->
+        <div class="content-notice-title-box">
+            <div class="content-notice-title-name-box">
+                <span class="content-notice-title-name">공지사항</span>
+            </div>
+        </div>
+
+        <!-- 공지사항 테이블 -->
+        <table class="content-notice-table" id="noticeTable">
+            <thead>
+            <tr class="content-notice-table-header">
+                <th>체크</th>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>등록일</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="content-notice-table-body" th:each="search : ${searchNotice}">
+                <td><input type="checkbox"/> </td>
+                <td th:text="${search.code}"></td>
+                <td th:text="${search.name}"></td>
+                <td>관리자</td>
+                <td th:text="${search.regist}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- 공지사항 검색 -->
+        <div class="notice-search">
+            <form action="/notice/searchNotice" method="post">
+                <input type="text" name="keyword" class="notice-search-input"/>
+                <button type="submit" class="notice-search-button">검색</button>
+            </form>
+        </div>
+
+        <!-- 공지사항 페이지네이션 -->
+        <div class="paging">
+            <i class="bi-chevron-double-left" id="firstPage"></i>
+            <i class="bi-chevron-left" id="prevPage"></i>
+            <div class="pages">
+                <span class="active">1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+            </div>
+            <i class="bi-chevron-right" id="nextPage"></i>
+            <i class="bi-chevron-double-right" id="lastPage"></i>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    /* 페이지 네이션 */
+    const countPerPage = 6; // 페이지 당 데이터 수
+    const showPageCnt = 5; // 화면에 보일 페이지 번호 개수
+    const totalRows = document.querySelectorAll('.content-notice-table-body').length; // 총 데이터 수
+    const totalPage = Math.ceil(totalRows / countPerPage); // 총 페이지 수, Math.ceil : 소수점 자리에서 올림 기능
+
+    let currentPage = 1; // 초기 페이지 초기화
+
+    // 페이지 네이션(페이지 번호) 출력 함수
+    function renderPagination() {
+
+        let pageGroup = Math.ceil(currentPage / showPageCnt) // 페이지 그룹. (1~5그룹, 6~10그룹, ...)
+
+        const pagesDiv = document.querySelector('.pages');
+        pagesDiv.innerHTML = ''; // 기존 1~5 페이지 초기화
+
+        let first = pageGroup * showPageCnt - (showPageCnt - 1); // 페이지 그룹의 첫 페이지 번호
+        let last = pageGroup * showPageCnt // 페이지 그룹의 마지막 페이지 번호
+
+        if (last > totalPage) {
+            last = totalPage;
+        } // 마지막 페이지 번호가 전체 페이지 번호보다 높을 경우 마지막 페이지로 설정
+
+        // 그룹의 첫 페이지 부터 마지막 페이지 까지 반복
+        for (let i = first; i <= last; i++) {
+            const pageSpan = document.createElement('span'); // createElement(): 새로운 HTML 요소를 생성
+            pageSpan.textContent = i; // pageSpan의 텍스트 내용을 i의 값으로 설정
+            pageSpan.addEventListener('click', function () { // pageSpan 클릭시 함수 실행
+                currentPage = i; // 클릭한 번호로 현재 페이지 설정
+                renderContent(currentPage); // 현재 페이지의 데이터를 표시하는 함수 호출
+                renderPagination(); // 페이지 네이션 다시 렌더링
+            });
+            if (i === currentPage) {
+                pageSpan.classList.add('active'); // pageSpan에 active 클래스 추가
+            }
+            pagesDiv.appendChild(pageSpan); // pagesDiv에 자식요소로 pageSpan 추가
+        }
+    }
+
+    // 페이지 데이터 출력 함수
+    function renderContent(page) {
+        const startIdx = (page - 1) * countPerPage; // 클릭한 페이지에서 불러올 첫번째 데이터 인덱스 번호
+        const endIdx = startIdx + countPerPage - 1; // 클릭한 페이지에서 불러올 마지막 데이터 인덱스 번호
+        const noticeRows = document.querySelectorAll('.content-notice-table-body') // noticeRows = 클래스가 content-notice-table-body 인 요소 모두 선택
+
+        noticeRows.forEach((row, idx) => { // 각 요소의 인덱스를 확인 후, 해당 인덱스가 현재 페이지에 표시되어야 하는 범위 내에 있는지 확인
+            if (idx >= startIdx && idx <= endIdx) { // 해당 인덱스가 범위 내에 있는 경우
+                row.style.display = 'table-row'; // table-row로 설정되어 표시
+            } else {
+                row.style.display = 'none'; // none으로 설정되어 숨겨진다.
+            }
+        });
+    }
+
+    // 페이지 로드 시 초기화 및 페이지네이션 랜더링
+    document.addEventListener('DOMContentLoaded', function () {
+        renderContent(currentPage);
+        renderPagination();
+    });
+
+    // 이전 페이지로 이동
+    document.getElementById('prevPage').addEventListener('click', function () {
+        if (currentPage > 1) {
+            currentPage--;
+            renderContent(currentPage);
+            renderPagination();
+        }
+    });
+
+    // 다음 페이지로 이동
+    document.getElementById('nextPage').addEventListener('click', function () {
+        if (currentPage < totalPage) {
+            currentPage++;
+            renderContent(currentPage);
+            renderPagination();
+        }
+    });
+
+    // 처음 페이지로 이동
+    document.getElementById('firstPage').addEventListener('click', function () {
+        currentPage = 1;
+        renderContent(currentPage);
+        renderPagination();
+    });
+
+    // 마지막 페이지로 이동
+    document.getElementById('lastPage').addEventListener('click', function () {
+        currentPage = totalPage;
+        renderContent(currentPage);
+        renderPagination();
+    })
+</script>
+
+
+</body>
+</html>

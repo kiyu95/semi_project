@@ -354,7 +354,7 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     overflow: hidden;
 }
 
-/* ********** 관리자 페이지 홈  ********** */
+/* ******************** 관리자 페이지 홈  ******************** */
 .content-admin-home {
     width: 1440px;
     height: 900px;
@@ -383,7 +383,7 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     font-size: 100px;
 }
 
-/* ********** 사용자 관리  ********** */
+/* ******************** 사용자 관리  ******************** */
 .content-user-management {
     width: 1440px;
     height: 900px;
@@ -453,6 +453,7 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     text-align: center;
 }
 
+/* ******************** 페이지네이션  ******************** */
 .paging {
     font-size: 30px;
     width: 100%;
@@ -479,4 +480,97 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 .active {
     color: #17A1FA;
     font-weight: bold;
+}
+
+/* ******************** 사용자 관리  ******************** */
+.content-notice {
+    width: 1440px;
+    height: 900px;
+    background-color: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    overflow: hidden;
+}
+
+.content-notice-title-box {
+    width: 100%;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+
+.content-notice-title-name-box {
+    width: 150px;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-notice-title-name {
+    font-size: 30px;
+    color: #17A1FA;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    opacity: 1;
+}
+
+.content-notice-table {
+    margin: 0 20px 20px 20px;
+    border-collapse: collapse;
+    font-size: 24px;
+    width: 1400px;
+    opacity: 1;
+    position: relative;
+}
+
+.content-notice-table th,
+.content-notice-table td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.content-notice-table-header {
+    width: 100%;
+    height: 100px;
+}
+
+.content-notice-table-body {
+    height: 100px;
+    text-align: center;
+}
+
+/* ******************** 공지사항 검색  ******************** */
+.notice-search {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 80px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notice-search-input {
+    width: 200px;
+    height: 30px;
+}
+
+.notice-search-button {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 20px;
+
+    width: 70px;
+    height: 32px;
 }

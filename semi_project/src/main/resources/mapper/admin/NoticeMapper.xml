@@ -20,4 +20,18 @@
           FROM TBL_NOTICE
          WHERE NOTICE_STATUS = 'Y'
     </select>
+
+    <select id="searchNotice" resultMap="noticeResult">
+        SELECT
+            NOTICE_CODE,
+            NOTICE_NAME,
+            REGIST_DATE
+          FROM TBL_NOTICE
+         WHERE 1=1
+            AND NOTICE_STATUS = 'Y'
+        <if test='keyword != null and keyword != ""'>
+            AND NOTICE_NAME LIKE CONCAT('%',#{keyword},'%')
+        </if>
+    </select>
+
 </mapper>
