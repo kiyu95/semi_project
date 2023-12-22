@@ -42,7 +42,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr class="content-notice-table-body" th:each="search : ${searchNotice}">
+            <tr class="content-notice-table-body" th:each="search : ${searchList}">
                 <td><input type="checkbox"/> </td>
                 <td th:text="${search.code}"></td>
                 <td th:text="${search.name}"></td>
