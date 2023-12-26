@@ -29,29 +29,29 @@
                     <span class="content-notice-title-name">공지사항</span>
                 </div>
             </div>
-
-            <!-- 공지사항 테이블 -->
-            <table class="content-notice-table" id="noticeTable">
-                <thead>
-                    <tr class="content-notice-table-header">
-                        <th>체크</th>
-                        <th>번호</th>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>등록일</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="content-notice-table-body" th:each="notice : ${noticeList}">
-                        <td><input type="checkbox"/> </td>
-                        <td th:text="${notice.code}"></td>
-                        <td th:text="${notice.name}"></td>
-                        <td>관리자</td>
-                        <td th:text="${notice.regist}"></td>
-                    </tr>
-                </tbody>
-            </table>
-
+<!--            <form action="/notice/deleteNotices" method="post" id="deleteForm">-->
+                <!-- 공지사항 테이블 -->
+                <table class="content-notice-table" id="noticeTable">
+                    <thead>
+                        <tr class="content-notice-table-header">
+                            <th>체크</th>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>등록일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="content-notice-table-body" th:each="notice : ${noticeList}">
+                            <td><input type="checkbox" name="selectedNoticeCodes" th:value="${notice.code}"/> </td>
+                            <td th:text="${notice.code}"></td>
+                            <td th:text="${notice.name}"></td>
+                            <td>관리자</td>
+                            <td th:text="${notice.regist}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+<!--            </form>-->
             <!-- 공지사항 검색 -->
             <div class="notice-search">
                 <form action="/notice/searchNotice" method="post">
@@ -60,6 +60,19 @@
                 </form>
             </div>
 
+            <!-- 공지사항 작성 -->
+            <div class="notice-regist-box">
+                <a href="/notice/registPage">작성하기</a>
+            </div>
+
+            <!-- 공지사항 삭제 버튼-->
+<!--            <div class="notice-delete-box">-->
+            <form action="/notice/deleteNotices" method="post" id="deleteForm">
+                <button type="button" onclick="deleteSelectedNotices()" class="notice-delete-box">삭제하기</button>
+                <input type="hidden" id="selectedNoticeCodes" name="selectedNoticeCodes" />
+            </form>
+<!--            <input type="hidden" id="\">-->
+<!--            </div>-->
             <!-- 공지사항 페이지네이션 -->
             <div class="paging">
                 <i class="bi-chevron-double-left" id="firstPage"></i>
@@ -170,6 +183,23 @@
             renderContent(currentPage);
             renderPagination();
         })
+
+        /* javascript를 이용하여 선택된 공지사항 코드를 서버로 전달 */
+        function deleteSelectedNotices() {
+            let selectedNoticeCodes = []; // 선택한 공지사항 코드를 저장할 배열
+
+            // 모든 체크박스를 확인하여 선택된 체크박스의 값을 배열에 넣어준다
+            document.querySelectorAll('input[type=checkbox]:checked').forEach(function (checkbox) {
+                selectedNoticeCodes.push(checkbox.value);
+            });
+
+            // 선택된 체크박스의 공지사항 코드 리스트를 서버로 보내준다
+            document.getElementById('selectedNoticeCodes').value = selectedNoticeCodes;
+
+            // 폼을 제출한다
+            document.getElementById('deleteForm').submit();
+
+        }
     </script>
 
 

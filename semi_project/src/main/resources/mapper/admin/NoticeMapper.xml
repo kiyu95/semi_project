@@ -33,5 +33,34 @@
             AND NOTICE_NAME LIKE CONCAT('%',#{keyword},'%')
         </if>
     </select>
+    
+    <update id="deleteNotice">
+        UPDATE TBL_NOTICE
+           SET NOTICE_STATUS = 'N'
+         WHERE NOTICE_CODE IN
+        <foreach item="code" collection="selectedNoticeCodeList" open="(" separator="," close=")">
+            #{code}
+        </foreach>
+        <!-- item: 배열의 각 요소를 가리키는 변수명
+             collection: 꺼내올 배열의 이름 (DTO에서 가져옴)
+             open, close: foreach 할 때 시작, 끝 부분에 추가되는 문자열 (1),(2)
+             separator: 배열의 각 요소 사이에 추가될 문자열
+        -->
+    </update>
+
+    <insert id="registNotice">
+        INSERT INTO TBL_NOTICE
+        VALUES(
+            NULL,
+            #{name},
+            #{content},
+            NOW(),
+            1,
+            NOW(),
+            NULL,
+            NULL,
+            'Y'
+        );
+    </insert>
 
 </mapper>

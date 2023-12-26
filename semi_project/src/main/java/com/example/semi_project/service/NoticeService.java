@@ -29,4 +29,18 @@ public class NoticeService {
 
         return searchNotice;
     }
+
+    public int deleteSelectedNotices(String[] selectedNoticeCodeList) {
+
+        int result = noticeDAO.deleteNotice(selectedNoticeCodeList);
+
+        return result;
+
+    }
+
+    public int registNotice(String name, String content) {
+        int result = noticeDAO.registNotice(name, content);
+
+        return result;
+    }
 }

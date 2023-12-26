@@ -482,7 +482,7 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     font-weight: bold;
 }
 
-/* ******************** 사용자 관리  ******************** */
+/* ******************** 공지사항  ******************** */
 .content-notice {
     width: 1440px;
     height: 900px;
@@ -573,4 +573,152 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 
     width: 70px;
     height: 32px;
+}
+
+/* ******************** 공지사항 작성하기  ******************** */
+.notice-regist-box {
+    font-family: 'Do Hyeon', sans-serif;
+    /*background-color: lightskyblue;*/
+    font-size: 20px;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    left: 1200px;
+    bottom: 90px;
+    border: 1px solid black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ******************** 공지사항 삭제하기  ******************** */
+.notice-delete-box {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 20px;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    left: 1310px;
+    bottom: 90px;
+    border: 1px solid black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ******************** 공지사항 등록페이지  ******************** */
+.notice-regist {
+    width: 1440px;
+    height: 900px;
+    background-color: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    overflow: hidden;
+}
+
+.notice-regist-title-box {
+    width: 100%;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+
+.notice-regist-title-name-box {
+    width: 200px;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notice-regist-title-name {
+    font-size: 30px;
+    color: #17A1FA;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    opacity: 1;
+}
+
+.notice-regist-name-box {
+    margin: 0 20px 20px 20px;
+    border-collapse: collapse;
+    font-size: 24px;
+    width: 1400px;
+    height: 100px;
+    opacity: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.notice-regist-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100px;
+    position: absolute;
+}
+
+.notice-regist-name-input {
+    left: 100px;
+    width: 1000px;
+    height: 50px;
+    font-size: 24px;
+    position: absolute;
+}
+
+.notice-regist-content-box {
+    margin: 0 20px 20px 20px;
+    border-collapse: collapse;
+    font-size: 24px;
+    width: 1400px;
+    height: 550px;
+    opacity: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.notice-regist-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100px;
+    position: absolute;
+}
+
+.notice-regist-content-input {
+    left: 100px;
+    width: 1000px;
+    height: 550px;
+    font-size: 24px;
+    position: absolute;
+}
+
+.notice-regist-btn {
+    font-family: 'Do Hyeon', sans-serif;
+    /*background-color: lightskyblue;*/
+    font-size: 20px;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    left: 1020px;
+    bottom: 90px;
+    border: 1px solid black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }

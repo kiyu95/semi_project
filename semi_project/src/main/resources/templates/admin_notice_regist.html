@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>notice</title>
+
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet"/>
+
+    <style>
+        .notice {
+            color: #17A1FA;
+        }
+    </style>
+
+</head>
+<body>
+    <div th:insert="/admin_main.html :: mainFragment"></div>
+
+    <div class="content">
+        <div class="notice-regist">
+            <div class="notice-regist-title-box">
+                <div class="notice-regist-title-name-box">
+                    <span class="notice-regist-title-name">공지사항 등록</span>
+                </div>
+            </div>
+
+            <form name="noticeForm" action="/notice/registNotice" method="post" autocomplete="off">
+                <div class="notice-regist-name-box">
+                    <div class="notice-regist-name">제목</div>
+                    <input type="text" name="name" class="notice-regist-name-input"/>
+                </div>
+
+                <div class="notice-regist-content-box">
+                    <div class="notice-regist-content">내용</div>
+                    <input type="text" name="content" class="notice-regist-content-input"/>
+                </div>
+                <button type="submit" class="notice-regist-btn" onclick="btn()">등록하기</button>
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+
+        /* 엔터 입력시 submit 막기 */
+        document.addEventListener('keydown', function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+            };
+        }, true);
+
+
+        /* 등록버튼 누를 시 alert */
+        function btn() {
+            if (noticeForm.name.value === "" || noticeForm.content.value === "") {
+                alert("입력이 올바르지 않습니다.")
+                return false;
+            } else {
+                alert("공지를 등록하였습니다.")
+            }
+        }
+    </script>
+</body>
+</html>
