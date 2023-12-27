@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.semi_project.dao.ProposeDAO">
+
+    <resultMap id="proposeResult" type="com.example.semi_project.dto.ProposeSelectDTO">
+        <id property="code" column="PROPOSE_CODE"/>
+        <result property="name" column="PROPOSE_NAME"/>
+        <result property="userCode" column="USER_CODE"/>
+        <result property="regist" column="REGIST_DATE"/>
+    </resultMap>
+
+    <resultMap id="proposeAnswer" type="com.example.semi_project.dto.ProposeAnswerDTO">
+        <id property="auth" column="COMMENT_AUTH"/>
+    </resultMap>
+
+
+    <select id="selectAllPropose" resultMap="proposeResult">
+        SELECT
+            PROPOSE_CODE,
+            PROPOSE_NAME,
+            USER_CODE,
+            REGIST_DATE
+          FROM TBL_PROPOSE
+         WHERE PROPOSE_STATUS = 'Y'
+    </select>
+
+    <select id="proposeAnswer" resultMap="proposeAnswer">
+        SELECT
+            COMMENT_AUTH
+          FROM TBL_COMMENT
+         WHERE PROPOSE_CODE = #{proposeCode}
+    </select>
+
+    <insert id="answerRegist">
+        INSERT INTO TBL_COMMENT
+        VALUES (
+            NULL,
+            #{proposeAnswer},
+            1,
+            #{proposeCode}
+        )
+    </insert>
+</mapper>

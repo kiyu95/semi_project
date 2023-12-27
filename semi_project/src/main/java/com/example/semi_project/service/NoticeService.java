@@ -18,6 +18,7 @@ public class NoticeService {
 
     public List<NoticeSelectDTO> selectAllNotice() {
         List<NoticeSelectDTO> noticeList = noticeDAO.selectAllNotice(); // notice를 List형으로 꺼내옴
+
         if (Objects.isNull(noticeList)) { // noticeDAO.selectAllNotice() 에서 반환된 값이 없을 경우
             System.out.println("등록된 공지사항이 없습니다.");
         }

@@ -9,7 +9,6 @@
         <id property="code" column="NOTICE_CODE"/>
         <result property="name" column="NOTICE_NAME"/>
         <result property="regist" column="REGIST_DATE"/>
-        <result property="status" column="NOTICE_STATUS"/>
     </resultMap>
 
     <select id="selectAllNotice" resultMap="noticeResult">

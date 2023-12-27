@@ -38,7 +38,7 @@
                     <div class="notice-regist-content">내용</div>
                     <input type="text" name="content" class="notice-regist-content-input"/>
                 </div>
-                <button type="submit" class="notice-regist-btn" onclick="btn()">등록하기</button>
+                <button type=button class="notice-regist-btn" onclick="btn()">등록하기</button>
             </form>
 
         </div>
@@ -56,10 +56,16 @@
 
         /* 등록버튼 누를 시 alert */
         function btn() {
-            if (noticeForm.name.value === "" || noticeForm.content.value === "") {
-                alert("입력이 올바르지 않습니다.")
+            if (noticeForm.name.value === "") {
+                noticeForm.name.focus();
+                alert("제목을 입력해주세요.")
+                return false;
+            } else if (noticeForm.content.value === "") {
+                noticeForm.content.focus();
+                alert("내용을 입력해주세요.")
                 return false;
             } else {
+                noticeForm.submit();
                 alert("공지를 등록하였습니다.")
             }
         }

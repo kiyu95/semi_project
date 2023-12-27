@@ -255,7 +255,7 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     align-items: center;
 }
 
-.question {
+.propose {
     border: 0;
     width: 300px;
     color: rgba(255,255,255,1);
@@ -267,7 +267,7 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     text-align: left;
 }
 
-.question-img-box {
+.propose-img-box {
     width: 100px;
     height: 50px;
     opacity: 1;
@@ -578,7 +578,7 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 /* ******************** 공지사항 작성하기  ******************** */
 .notice-regist-box {
     font-family: 'Do Hyeon', sans-serif;
-    /*background-color: lightskyblue;*/
+    background-color: lightskyblue;
     font-size: 20px;
     width: 100px;
     height: 30px;
@@ -710,7 +710,7 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 
 .notice-regist-btn {
     font-family: 'Do Hyeon', sans-serif;
-    /*background-color: lightskyblue;*/
+    background-color: lightskyblue;
     font-size: 20px;
     width: 100px;
     height: 30px;
@@ -721,4 +721,288 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     display: inline-flex;
     align-items: center;
     justify-content: center;
+}
+
+/* ******************** 문의사항  ******************** */
+.content-propose {
+    width: 1440px;
+    height: 900px;
+    background-color: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    overflow: hidden;
+}
+
+.content-propose-title-box {
+    width: 100%;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+
+.content-propose-title-name-box {
+    width: 150px;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-propose-title-name {
+    font-size: 30px;
+    color: #17A1FA;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    opacity: 1;
+}
+
+.content-propose-table {
+    margin: 0 20px 20px 20px;
+    border-collapse: collapse;
+    font-size: 24px;
+    width: 1400px;
+    opacity: 1;
+    position: relative;
+}
+
+.content-propose-table th,
+.content-propose-table td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.content-propose-table-header {
+    width: 100%;
+    height: 100px;
+}
+
+.content-propose-table-body {
+    height: 100px;
+    text-align: center;
+}
+
+/* ******************** 문의사항 검색  ******************** */
+.propose-search {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 80px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.propose-search-input {
+    width: 200px;
+    height: 30px;
+}
+
+.propose-search-button {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 20px;
+
+    width: 70px;
+    height: 32px;
+}
+
+/* ******************** 문의사항 작성하기  ******************** */
+.propose-regist-box {
+    font-family: 'Do Hyeon', sans-serif;
+    background-color: lightskyblue;
+    font-size: 20px;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    left: 1200px;
+    bottom: 90px;
+    border: 1px solid black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ******************** 문의사항 삭제하기  ******************** */
+.propose-delete-box {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 20px;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    left: 1310px;
+    bottom: 90px;
+    border: 1px solid black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ******************** 문의사항 답변페이지  ******************** */
+.propose-answer {
+    width: 1440px;
+    height: 900px;
+    background-color: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    overflow: hidden;
+}
+
+.propose-answer-title-box {
+    width: 100%;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+
+.propose-answer-title-name-box {
+    width: 200px;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.propose-answer-title-name {
+    font-size: 30px;
+    color: #17A1FA;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    opacity: 1;
+}
+
+.selected-propose-name-box {
+    margin: 0 20px 20px 20px;
+    border-collapse: collapse;
+    font-size: 24px;
+    width: 1400px;
+    height: 100px;
+    opacity: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.propose-name-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100px;
+    position: absolute;
+}
+
+.selected-propose-name {
+    border: 1px solid black;
+    padding-left: 10px;
+    left: 100px;
+    width: 1000px;
+    height: 50px;
+    font-size: 24px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+}
+
+.selected-propose-content-box {
+    margin: 0 20px 20px 20px;
+    border-collapse: collapse;
+    font-size: 24px;
+    width: 1400px;
+    height: 300px;
+    opacity: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.propose-content-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100px;
+    position: absolute;
+}
+
+.selected-propose-content {
+    border: 1px solid black;
+    padding: 10px;
+    left: 100px;
+    width: 1000px;
+    height: 300px;
+    font-size: 24px;
+    position: absolute;
+}
+
+.propose-answer-input {
+    margin: 0 20px 0 20px;
+    border-collapse: collapse;
+    padding: 10px;
+    left: 100px;
+    bottom: 90px;
+    width: 880px;
+    height: 100px;
+    font-size: 24px;
+    position: absolute;
+}
+
+.propose-answer-btn {
+    font-family: 'Do Hyeon', sans-serif;
+    background-color: lightskyblue;
+    font-size: 20px;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 1020px;
+    bottom: 90px;
+    border: 1px solid black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selected-propose-answer-box {
+    margin: 0 20px 0 20px;
+    /*border-collapse: collapse;*/
+    /*border: 1px solid black;*/
+    padding: 10px;
+    left: 100px;
+    width: 1000px;
+    height: 150px;
+    font-size: 24px;
+    position: absolute;
+}
+
+.propose-answer-box {
+    color: #17A1FA;
+}
+
+.propose-answer-hr {
+    width: 980px;
+    border: 1px solid #17A1FA;
+}
+
+.propose-answer-content {
+    height: 100px;
 }

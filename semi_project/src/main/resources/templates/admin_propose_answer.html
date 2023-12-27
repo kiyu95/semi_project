@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>notice</title>
+
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet"/>
+
+    <style>
+        .propose {
+            color: #17A1FA;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div th:insert="/admin_main.html :: mainFragment"></div>
+
+    <div class="content">
+
+        <div class="propose-answer">
+
+            <!-- 타이틀 -->
+            <div class="propose-answer-title-box">
+                <div class="propose-answer-title-name-box">
+                    <span class="propose-answer-title-name">문의사항 답변</span>
+                </div>
+            </div>
+
+            <!-- 문의사항 제목 -->
+            <div class="selected-propose-name-box">
+                <div class="propose-name-box">제목</div>
+                <div class="selected-propose-name" th:text="${proposeCode}"></div>
+            </div>
+
+            <!-- 문의사항 내용 -->
+            <div class="selected-propose-content-box">
+                <div class="propose-content-box">내용</div>
+                <div class="selected-propose-content" th:text="${proposeName}"></div>
+            </div>
+
+            <!-- 답변내용 -->
+            <div class="selected-propose-answer-box">
+                <div class="propose-answer-box">답변</div>
+                <hr class="propose-answer-hr">
+                <div class="propose-answer-content" th:text="${answer != null ? answer.auth : ''}"></div>
+            </div>
+
+            <!-- 답변등록 -->
+            <form name="proposeAnswerForm" action="/propose/answerRegist" method="post" autocomplete="off">
+                <input type="text" name="proposeAnswer" class="propose-answer-input"/>
+                <input type="hidden" name="proposeCode" th:value="${proposeCode}"/>
+                <input type="hidden" name="proposeName" th:value="${proposeName}">
+                <button type="button" class="propose-answer-btn" onclick="btn()">등록하기</button>
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+
+        /* 엔터 입력시 submit 막기 */
+        document.addEventListener('keydown', function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+            };
+        }, true);
+
+        /* 등록버튼 누를 시 alert */
+        function btn() {
+            if (proposeAnswerForm.proposeAnswer.value === "") {
+                proposeAnswerForm.proposeAnswer.focus();
+                alert("내용을 입력해주세요.")
+                return false;
+            } else {
+                proposeAnswerForm.submit();
+                alert("답변을 등록하였습니다.")
+            }
+        }
+
+        if (document.getElementsByClassName('propose-answer-content').length) {
+            true;
+        } else {
+
+        }
+    </script>
+
+</body>
+</html>

@@ -12,6 +12,7 @@
     <mappers>
         <mapper resource="mapper/admin/AdminMapper.xml" />
         <mapper resource="mapper/admin/NoticeMapper.xml" />
+        <mapper resource="mapper/admin/ProposeMapper.xml" />
     </mappers>
 
 </configuration>
