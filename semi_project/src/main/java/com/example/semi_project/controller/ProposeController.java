@@ -68,4 +68,33 @@ public class ProposeController {
         return mv;
     }
 
+    @PostMapping("/deletePropose")
+    public ModelAndView deletePropose(ModelAndView mv, @RequestParam String selectedProposeCodes) {
+
+        String[] selectedProposeCodeList = selectedProposeCodes.split(",");
+
+        int result = proposeService.deletePropose(selectedProposeCodeList);
+
+        List<ProposeSelectDTO> proposeList = proposeService.selectAllPropose();
+
+        mv.addObject("proposeList", proposeList);
+        mv.setViewName("admin_propose");
+        return mv;
+    }
+
+    @PostMapping("/searchPropose")
+    public ModelAndView searchPropose(ModelAndView mv, @RequestParam String keyword) {
+
+        List<ProposeSelectDTO> proposeList = proposeService.selectAllPropose(keyword);
+
+        if (Objects.isNull(proposeList)) {
+            System.out.println("검색 결과가 없습니다");
+        }
+
+        mv.addObject("proposeList", proposeList);
+        mv.setViewName("admin_propose");
+        return mv;
+    }
+
+
 }

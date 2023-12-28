@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.semi_project.dao.RecommendDAO">
+
+    <resultMap id="recommendResult" type="com.example.semi_project.dto.RecommendSelectDTO">
+        <id property="code" column="RECOMMEND_CODE"/>
+        <result property="categoryName" column="CATEGORY_NAME"/>
+        <result property="content" column="REC_CONTENT"/>
+    </resultMap>
+
+    <select id="selectAllRecommend" resultMap="recommendResult">
+        SELECT
+            R.RECOMMEND_CODE,
+            PC.CATEGORY_NAME,
+            R.REC_CONTENT
+          FROM TBL_RECOMMEND AS R
+          JOIN TBL_PRAISE_CATEGORY AS PC ON R.CATEGORY_CODE = PC.CATEGORY_CODE
+         WHERE R.RECOMMEND_STATUS = 'Y'
+        <if test='keyword != null and keyword != ""'>
+            AND ${criteria} LIKE CONCAT ('%',#{keyword},'%')
+        </if>
+         ORDER BY R.RECOMMEND_CODE DESC
+    </select>
+
+    <insert id="registRecommend">
+        INSERT INTO TBL_RECOMMEND
+        VALUES (
+            NULL,
+            ${categoryCode},
+            #{content},
+            'Y',
+            NOW()
+        )
+    </insert>
+</mapper>

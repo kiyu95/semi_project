@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet"/>
 
     <style>
-        .propose {
+        .content-management {
             color: #17A1FA;
         }
     </style>
@@ -22,63 +22,64 @@
     <div th:insert="/admin_main.html :: mainFragment"></div>
 
     <div class="content">
-        <div class="content-propose">
+        <div class="content-recommend">
 
-            <!-- 문의사항 제목 -->
-            <div class="content-propose-title-box">
-                <div class="content-propose-title-name-box">
-                    <span class="content-propose-title-name">문의사항</span>
+            <!-- 추천문구 제목 -->
+            <div class="content-recommend-title-box">
+                <div class="content-recommend-title-name-box">
+                    <span class="content-recommend-title-name">추천문구</span>
                 </div>
             </div>
 
 
-            <!-- 문의사항 테이블 -->
-            <table class="content-propose-table" id="proposeTable">
+            <!-- 추천문구 테이블 -->
+            <table class="content-recommend-table" id="recommendTable">
                 <thead>
-                <tr class="content-propose-table-header">
+                <tr class="content-recommend-table-header">
                     <th>체크</th>
                     <th>번호</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>등록일</th>
+                    <th>키워드</th>
+                    <th>내용</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="content-propose-table-body" th:each="propose : ${proposeList}">
-                    <td><input type="checkbox" name="selectedProposeCodes" th:value="${propose.code}"></td>
-<!--                    <td><a href="#" th:text="${propose.code}"></a></td>-->
-                    <td th:text="${propose.code}"></td>
-                    <td><a th:href="@{/propose/selectPropose(proposeCode=${propose.code}, proposeName=${propose.name})}" th:text="${propose.name}"></a></td>
-                    <td th:text="${propose.userCode}"></td>
-                    <td th:text="${propose.regist}"></td>
+                <tr class="content-recommend-table-body" th:each="recommend : ${recommendList}">
+                    <td><input type="checkbox" name="selectedRecommendCodes" th:value="${recommend.code}"></td>
+                    <td th:text="${recommend.code}"></td>
+                    <td th:text="${recommend.categoryName}"></td>
+                    <td><a th:text="${recommend.content}"></a></td>
                 </tr>
                 </tbody>
             </table>
 
 
-            <!-- 문의사항 검색 -->
-            <div class="propose-search">
-                <form action="/propose/searchPropose" method="post">
-                    <input type="text" name="keyword" class="propose-search-input"/>
-                    <button type="submit" class="propose-search-button">검색</button>
+            <!-- 추천문구 검색 -->
+            <div class="recommend-search">
+                <form action="/recommend/search" method="post">
+                    <select name="criteria" class="recommend-search-criteria">
+                        <option value="PC.CATEGORY_NAME">키워드</option>
+                        <option value="R.REC_CONTENT">내용</option>
+                    </select>
+                    <input type="text" name="keyword" class="recommend-search-input"/>
+                    <button type="submit" class="recommend-search-button">검색</button>
                 </form>
             </div>
 
 
-            <!-- 문의사항 작성 -->
-            <div class="propose-regist-box">
-                <a href="#">작성하기</a>
+            <!-- 추천문구 작성 -->
+            <div class="recommend-regist-box">
+                <a href="/recommend/registPage">작성하기</a>
             </div>
 
 
-            <!-- 공지사항 삭제 -->
-            <form action="/propose/deletePropose" method="post" id="deleteForm">
-                <button type="button" onclick="deleteSelectedPropose()" class="propose-delete-box">삭제하기</button>
-                <input type="hidden" id="selectedProposeCodes" name="selectedProposeCodes"/>
+            <!-- 추천문구 삭제 -->
+            <form action="#" method="post" id="deleteForm">
+                <button type="button" onclick="deleteSelectedRecommend()" class="recommend-delete-box">삭제하기</button>
+                <input type="hidden" id="selectedRecommendCodes" name="selectedRecommendCodes"/>
             </form>
 
 
-            <!-- 문의사항 페이지네이션 -->
+            <!-- 페이지네이션 -->
             <div class="paging">
                 <i class="bi-chevron-double-left" id="firstPage"></i>
                 <i class="bi-chevron-left" id="prevPage"></i>
@@ -92,17 +93,15 @@
                 <i class="bi-chevron-right" id="nextPage"></i>
                 <i class="bi-chevron-double-right" id="lastPage"></i>
             </div>
-
         </div>
     </div>
 
 
     <script>
-
         /* 페이지 네이션 */
         const countPerPage = 6; // 페이지 당 데이터 수
         const showPageCnt = 5; // 화면에 보일 페이지 번호 개수
-        const totalRows = document.querySelectorAll('.content-propose-table-body').length; // 총 데이터 수
+        const totalRows = document.querySelectorAll('.content-recommend-table-body').length; // 총 데이터 수
         const totalPage = Math.ceil(totalRows / countPerPage); // 총 페이지 수, Math.ceil : 소수점 자리에서 올림 기능
 
         let currentPage = 1; // 초기 페이지 초기화
@@ -142,7 +141,7 @@
         function renderContent(page) {
             const startIdx = (page - 1) * countPerPage; // 클릭한 페이지에서 불러올 첫번째 데이터 인덱스 번호
             const endIdx = startIdx + countPerPage - 1; // 클릭한 페이지에서 불러올 마지막 데이터 인덱스 번호
-            const proposeRows = document.querySelectorAll('.content-propose-table-body') // proposeRows = 클래스가 content-propose-table-body 인 요소 모두 선택
+            const proposeRows = document.querySelectorAll('.content-recommend-table-body') // proposeRows = 클래스가 content-recommend-table-body 인 요소 모두 선택
 
             proposeRows.forEach((row, idx) => { // 각 요소의 인덱스를 확인 후, 해당 인덱스가 현재 페이지에 표시되어야 하는 범위 내에 있는지 확인
                 if (idx >= startIdx && idx <= endIdx) { // 해당 인덱스가 범위 내에 있는 경우
@@ -191,17 +190,17 @@
             renderPagination();
         })
 
-        /* javascript를 이용하여 선택된 문의사항 코드를 서버로 전달 */
-        function deleteSelectedPropose() {
-            let selectedProposeCodes = []; // 선택한 문의사항 코드를 저장할 배열
+        /* javascript를 이용하여 선택된 추천문구 코드를 서버로 전달 */
+        function deleteSelectedRecommend() {
+            let selectedRecommendCodes = []; // 선택한 추천문구 코드를 저장할 배열
 
             // 모든 체크박스를 확인하여 선택된 체크박스의 값을 배열에 넣어준다
             document.querySelectorAll('input[type=checkbox]:checked').forEach(function (checkbox) {
-                selectedProposeCodes.push(checkbox.value);
+                selectedRecommendCodes.push(checkbox.value);
             });
 
-            // 선택된 체크박스의 문의사항 코드 리스트를 서버로 보내준다
-            document.getElementById('selectedProposeCodes').value = selectedProposeCodes;
+            // 선택된 체크박스의 추천문구 코드 리스트를 서버로 보내준다
+            document.getElementById('selectedRecommendCodes').value = selectedRecommendCodes;
 
             // 폼을 제출한다
             document.getElementById('deleteForm').submit();

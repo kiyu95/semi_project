@@ -13,4 +13,8 @@ public interface ProposeDAO {
     ProposeAnswerDTO proposeAnswer(int proposeCode, String proposeName);
 
     int answerRegist(String proposeAnswer, int proposeCode);
+
+    int deletePropose(String[] selectedProposeCodeList);
+
+    List<ProposeSelectDTO> selectAllPropose(String keyword);
 }

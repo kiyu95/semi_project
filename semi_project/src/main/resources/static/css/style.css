@@ -1006,3 +1006,257 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 .propose-answer-content {
     height: 100px;
 }
+
+/* ******************** 추천문구  ******************** */
+.content-recommend {
+    width: 1440px;
+    height: 900px;
+    background-color: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    overflow: hidden;
+}
+
+.content-recommend-title-box {
+    width: 100%;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+
+.content-recommend-title-name-box {
+    width: 150px;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-recommend-title-name {
+    font-size: 30px;
+    color: #17A1FA;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    opacity: 1;
+}
+
+.content-recommend-table {
+    margin: 0 20px 20px 20px;
+    border-collapse: collapse;
+    font-size: 24px;
+    width: 1400px;
+    opacity: 1;
+    position: relative;
+}
+
+.content-recommend-table th,
+.content-recommend-table td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.content-recommend-table-header {
+    width: 100%;
+    height: 100px;
+}
+
+.content-recommend-table-body {
+    height: 100px;
+    text-align: center;
+}
+
+/* ******************** 추천문구 검색  ******************** */
+.recommend-search {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 80px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recommend-search-criteria {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 20px;
+    width: 80px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.recommend-search-input {
+    width: 200px;
+    height: 30px;
+    margin-right: 10px;
+    padding-top: 3px;
+}
+
+.recommend-search-button {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 20px;
+
+    width: 70px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+/* ******************** 추천문구 작성하기  ******************** */
+.recommend-regist-box {
+    font-family: 'Do Hyeon', sans-serif;
+    background-color: lightskyblue;
+    font-size: 20px;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    left: 1200px;
+    bottom: 90px;
+    border: 1px solid black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ******************** 추천문구 삭제하기  ******************** */
+.recommend-delete-box {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 20px;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    left: 1310px;
+    bottom: 90px;
+    border: 1px solid black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ******************** 추천문구 등록페이지  ******************** */
+.recommend-regist {
+    width: 1440px;
+    height: 900px;
+    background-color: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    overflow: hidden;
+}
+
+.recommend-regist-title-box {
+    width: 100%;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+
+.recommend-regist-title-name-box {
+    width: 200px;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recommend-regist-title-name {
+    font-size: 30px;
+    color: #17A1FA;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    opacity: 1;
+}
+
+.recommend-select-category-box {
+    margin: 0 20px 20px 20px;
+    border-collapse: collapse;
+    font-size: 24px;
+    width: 1400px;
+    height: 100px;
+    opacity: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.recommend-regist-category {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100px;
+    position: absolute;
+}
+
+.recommend-select-category {
+    padding-left: 10px;
+    left: 100px;
+    width: 1000px;
+    height: 50px;
+    font-size: 24px;
+    position: absolute;
+}
+
+.recommend-regist-content-box {
+    margin: 0 20px 20px 20px;
+    border-collapse: collapse;
+    font-size: 24px;
+    width: 1400px;
+    height: 550px;
+    opacity: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.recommend-regist-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100px;
+    position: absolute;
+}
+
+.recommend-regist-content-input {
+    padding: 10px;
+    left: 100px;
+    width: 1000px;
+    height: 550px;
+    font-size: 24px;
+    position: absolute;
+}
+
+.recommend-regist-btn {
+    font-family: 'Do Hyeon', sans-serif;
+    background-color: lightskyblue;
+    font-size: 20px;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    left: 1020px;
+    bottom: 90px;
+    border: 1px solid black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}

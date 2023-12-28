@@ -37,4 +37,16 @@ public class ProposeService {
 
         return result;
     }
+
+    public int deletePropose(String[] selectedProposeCodeList) {
+        int result = proposeDAO.deletePropose(selectedProposeCodeList);
+
+        return result;
+    }
+
+    public List<ProposeSelectDTO> selectAllPropose(String keyword) {
+        List<ProposeSelectDTO> proposeList = proposeDAO.selectAllPropose(keyword);
+
+        return proposeList;
+    }
 }

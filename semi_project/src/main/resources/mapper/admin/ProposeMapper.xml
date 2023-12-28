@@ -17,6 +17,16 @@
     </resultMap>
 
 
+<!--    <select id="selectAllPropose" resultMap="proposeResult">-->
+<!--        SELECT-->
+<!--            PROPOSE_CODE,-->
+<!--            PROPOSE_NAME,-->
+<!--            USER_CODE,-->
+<!--            REGIST_DATE-->
+<!--          FROM TBL_PROPOSE-->
+<!--         WHERE PROPOSE_STATUS = 'Y'-->
+<!--    </select>-->
+
     <select id="selectAllPropose" resultMap="proposeResult">
         SELECT
             PROPOSE_CODE,
@@ -25,6 +35,9 @@
             REGIST_DATE
           FROM TBL_PROPOSE
          WHERE PROPOSE_STATUS = 'Y'
+        <if test='keyword != null and keyword != ""'>
+            AND PROPOSE_NAME LIKE CONCAT('%',#{keyword},'%')
+        </if>
     </select>
 
     <select id="proposeAnswer" resultMap="proposeAnswer">
@@ -43,4 +56,13 @@
             #{proposeCode}
         )
     </insert>
+
+    <update id="deletePropose">
+        UPDATE TBL_PROPOSE
+           SET PROPOSE_STATUS = 'N'
+         WHERE PROPOSE_CODE IN
+        <foreach collection="selectedProposeCodeList" item="code" open="(" separator="," close=")">
+            #{code}
+        </foreach>
+    </update>
 </mapper>
