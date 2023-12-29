@@ -33,4 +33,19 @@ public class RecommendService {
 
         return result;
     }
+
+    public int deleteRecommend(String[] selectedRecommendCodeList) {
+
+        int result = recommendDAO.deleteRecommend(selectedRecommendCodeList);
+
+        return result;
+    }
+
+    public int modifyRecommend(int recommendCode, int categoryCode, String content) {
+
+        int result = recommendDAO.modifyRecommend(recommendCode, categoryCode, content);
+
+        return result;
+    }
+
 }

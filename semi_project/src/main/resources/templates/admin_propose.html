@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <div th:insert="/admin_main.html :: mainFragment"></div>
+    <div th:insert="~{/admin_main.html :: mainFragment}"></div>
 
     <div class="content">
         <div class="content-propose">
@@ -48,7 +48,7 @@
                     <td><input type="checkbox" name="selectedProposeCodes" th:value="${propose.code}"></td>
 <!--                    <td><a href="#" th:text="${propose.code}"></a></td>-->
                     <td th:text="${propose.code}"></td>
-                    <td><a th:href="@{/propose/selectPropose(proposeCode=${propose.code}, proposeName=${propose.name})}" th:text="${propose.name}"></a></td>
+                    <td><a th:href="@{/propose/selectPropose(proposeCode=${propose.code}, proposeName=${propose.name}, proposeContent=${propose.content})}" th:text="${propose.name}"></a></td>
                     <td th:text="${propose.userCode}"></td>
                     <td th:text="${propose.regist}"></td>
                 </tr>
@@ -66,12 +66,12 @@
 
 
             <!-- 문의사항 작성 -->
-            <div class="propose-regist-box">
-                <a href="#">작성하기</a>
-            </div>
+<!--            <div class="propose-regist-box">-->
+<!--                <a href="#">작성하기</a>-->
+<!--            </div>-->
 
 
-            <!-- 공지사항 삭제 -->
+            <!-- 문의사항 삭제 -->
             <form action="/propose/deletePropose" method="post" id="deleteForm">
                 <button type="button" onclick="deleteSelectedPropose()" class="propose-delete-box">삭제하기</button>
                 <input type="hidden" id="selectedProposeCodes" name="selectedProposeCodes"/>
@@ -200,11 +200,16 @@
                 selectedProposeCodes.push(checkbox.value);
             });
 
-            // 선택된 체크박스의 문의사항 코드 리스트를 서버로 보내준다
-            document.getElementById('selectedProposeCodes').value = selectedProposeCodes;
+            if (selectedProposeCodes.length === 0) {
+                // 체크박스 선택이 없을경우 알림표시
+                alert("삭제할 항목을 선택해주세요.")
+            } else {
+                // 선택된 체크박스의 문의사항 코드 리스트를 서버로 보내준다
+                document.getElementById('selectedProposeCodes').value = selectedProposeCodes;
 
-            // 폼을 제출한다
-            document.getElementById('deleteForm').submit();
+                // 폼을 제출한다
+                document.getElementById('deleteForm').submit();
+            }
 
         }
     </script>

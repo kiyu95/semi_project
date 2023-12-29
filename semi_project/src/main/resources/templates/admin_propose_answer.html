@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <div th:insert="/admin_main.html :: mainFragment"></div>
+    <div th:insert="~{/admin_main.html :: mainFragment}"></div>
 
     <div class="content">
 
@@ -35,13 +35,13 @@
             <!-- 문의사항 제목 -->
             <div class="selected-propose-name-box">
                 <div class="propose-name-box">제목</div>
-                <div class="selected-propose-name" th:text="${proposeCode}"></div>
+                <div class="selected-propose-name" th:text="${proposeName}"></div>
             </div>
 
             <!-- 문의사항 내용 -->
             <div class="selected-propose-content-box">
                 <div class="propose-content-box">내용</div>
-                <div class="selected-propose-content" th:text="${proposeName}"></div>
+                <div class="selected-propose-content" th:text="${proposeContent}"></div>
             </div>
 
             <!-- 답변내용 -->

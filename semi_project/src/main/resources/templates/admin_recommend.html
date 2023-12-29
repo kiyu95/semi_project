@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <div th:insert="/admin_main.html :: mainFragment"></div>
+    <div th:insert="~{/admin_main.html :: mainFragment}"></div>
 
     <div class="content">
         <div class="content-recommend">
@@ -44,10 +44,10 @@
                 </thead>
                 <tbody>
                 <tr class="content-recommend-table-body" th:each="recommend : ${recommendList}">
-                    <td><input type="checkbox" name="selectedRecommendCodes" th:value="${recommend.code}"></td>
-                    <td th:text="${recommend.code}"></td>
+                    <td><input type="checkbox" name="selectedRecommendCodes" th:value="${recommend.recommendCode}"></td>
+                    <td th:text="${recommend.recommendCode}"></td>
                     <td th:text="${recommend.categoryName}"></td>
-                    <td><a th:text="${recommend.content}"></a></td>
+                    <td><a th:href="@{/recommend/selectRecommend(recommendCode=${recommend.recommendCode}, categoryCode=${recommend.categoryCode}, category=${recommend.categoryName}, content=${recommend.content})}" th:text="${recommend.content}"></a></td>
                 </tr>
                 </tbody>
             </table>
@@ -73,7 +73,7 @@
 
 
             <!-- 추천문구 삭제 -->
-            <form action="#" method="post" id="deleteForm">
+            <form action="/recommend/delete" method="post" id="deleteForm">
                 <button type="button" onclick="deleteSelectedRecommend()" class="recommend-delete-box">삭제하기</button>
                 <input type="hidden" id="selectedRecommendCodes" name="selectedRecommendCodes"/>
             </form>
@@ -199,11 +199,15 @@
                 selectedRecommendCodes.push(checkbox.value);
             });
 
-            // 선택된 체크박스의 추천문구 코드 리스트를 서버로 보내준다
-            document.getElementById('selectedRecommendCodes').value = selectedRecommendCodes;
+            if (selectedRecommendCodes.length === 0) {
+                alert("삭제할 항목을 선택해주세요")
+            } else {
+                // 선택된 체크박스의 추천문구 코드 리스트를 서버로 보내준다
+                document.getElementById('selectedRecommendCodes').value = selectedRecommendCodes;
 
-            // 폼을 제출한다
-            document.getElementById('deleteForm').submit();
+                // 폼을 제출한다
+                document.getElementById('deleteForm').submit();
+            }
 
         }
     </script>

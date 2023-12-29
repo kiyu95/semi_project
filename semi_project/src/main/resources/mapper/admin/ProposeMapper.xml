@@ -8,6 +8,7 @@
     <resultMap id="proposeResult" type="com.example.semi_project.dto.ProposeSelectDTO">
         <id property="code" column="PROPOSE_CODE"/>
         <result property="name" column="PROPOSE_NAME"/>
+        <result property="content" column="PROPOSE_CONTENT"/>
         <result property="userCode" column="USER_CODE"/>
         <result property="regist" column="REGIST_DATE"/>
     </resultMap>
@@ -31,6 +32,7 @@
         SELECT
             PROPOSE_CODE,
             PROPOSE_NAME,
+            PROPOSE_CONTENT,
             USER_CODE,
             REGIST_DATE
           FROM TBL_PROPOSE

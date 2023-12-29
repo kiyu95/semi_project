@@ -6,7 +6,8 @@
 <mapper namespace="com.example.semi_project.dao.RecommendDAO">
 
     <resultMap id="recommendResult" type="com.example.semi_project.dto.RecommendSelectDTO">
-        <id property="code" column="RECOMMEND_CODE"/>
+        <id property="recommendCode" column="RECOMMEND_CODE"/>
+        <result property="categoryCode" column="CATEGORY_CODE"/>
         <result property="categoryName" column="CATEGORY_NAME"/>
         <result property="content" column="REC_CONTENT"/>
     </resultMap>
@@ -14,6 +15,7 @@
     <select id="selectAllRecommend" resultMap="recommendResult">
         SELECT
             R.RECOMMEND_CODE,
+            R.CATEGORY_CODE,
             PC.CATEGORY_NAME,
             R.REC_CONTENT
           FROM TBL_RECOMMEND AS R
@@ -35,4 +37,19 @@
             NOW()
         )
     </insert>
+
+    <update id="deleteRecommend">
+        UPDATE TBL_RECOMMEND
+           SET RECOMMEND_STATUS = 'N'
+         WHERE RECOMMEND_CODE IN
+        <foreach item="code" collection="selectedRecommendCodeList" open="(" separator="," close=")">
+            #{code}
+        </foreach>
+    </update>
+
+    <update id="modifyRecommend">
+        UPDATE TBL_RECOMMEND
+           SET CATEGORY_CODE = #{categoryCode}, REC_CONTENT = #{content}
+         WHERE RECOMMEND_CODE = #{recommendCode}
+    </update>
 </mapper>

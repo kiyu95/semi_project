@@ -18,7 +18,7 @@
 
 </head>
 <body>
-    <div th:insert="/admin_main.html :: mainFragment"></div>
+    <div th:insert="~{/admin_main.html :: mainFragment}"></div>
 
     <div class="content">
         <div class="content-notice">
@@ -193,12 +193,16 @@
                 selectedNoticeCodes.push(checkbox.value);
             });
 
-            // 선택된 체크박스의 공지사항 코드 리스트를 서버로 보내준다
-            document.getElementById('selectedNoticeCodes').value = selectedNoticeCodes;
+            if (selectedNoticeCodes.length === 0) {
+                // 체크박스 체크가 없을경우 알림
+                alert("삭제할 항목을 선택해주세요")
+            } else {
+                // 선택된 체크박스의 공지사항 코드 리스트를 서버로 보내준다
+                document.getElementById('selectedNoticeCodes').value = selectedNoticeCodes;
 
-            // 폼을 제출한다
-            document.getElementById('deleteForm').submit();
-
+                // 폼을 제출한다
+                document.getElementById('deleteForm').submit();
+            }
         }
     </script>
 

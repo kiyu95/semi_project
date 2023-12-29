@@ -16,10 +16,9 @@
         }
     </style>
 
-<!--    <script src="js/admin.js"></script>-->
 </head>
 <body>
-    <div th:insert="/admin_main.html :: mainFragment"></div>
+    <div th:insert="~{/admin_main.html :: mainFragment}"></div>
 
     <div class="content">
         <div class="content-user-management">
@@ -160,67 +159,5 @@
     </script>
 
 
-    <!--    <script>-->
-<!--        const countPerPage = 7; // 페이지 당 데이터 건수-->
-<!--        const showPageCnt = 5; // 화면에 보일 페이지 번호 개수-->
-
-<!--        let totalPage = Math.ceil(tbody / countPerPage) // 총 페이지 수, Math.cell : 소수값이 존재할 때 올림-->
-<!--        let pageGroup = Math.ceil(currentPage / showPageCnt)-->
-<!--    /**************************************************************************************************/-->
-<!--        -->
-<!--        const table = document.getElementById("userTable");-->
-<!--        const tbody = table.tBodies[0].rows.length; // 리스트 전체 갯수-->
-
-<!--        let currentPage = 1; // 현재 페이지 초기화-->
-
-<!--        $(function () {-->
-<!--            const totalData = table.tBodies-->
-
-<!--            setTable(1);-->
-<!--            setPaging(1);-->
-
-<!--        });-->
-
-<!--        $(document).on('click', 'div.paging>div.pages>span', function() {-->
-<!--            if (!$(this).hasClass('active')) {-->
-<!--                $(this).parent().find('span.active').removeClass('active');-->
-<!--                $(this).addClass('active');-->
-
-<!--                setTable(Number($(this).text()));-->
-<!--            }-->
-<!--        });-->
-
-<!--        function pagination(currentPage) {-->
-<!--            const countPerPage = 7; // 페이지 당 데이터 건수-->
-<!--            const showPageCnt = 5; // 화면에 보일 페이지 번호 개수-->
-
-<!--            let totalPage = Math.ceil(tbody / countPerPage) // 총 페이지 수, Math.cell : 소수값이 존재할 때 올림-->
-<!--            let pageGroup = Math.ceil(currentPage / showPageCnt) // 페이지 그룹 6/5 = 1.2 -> 2-->
-
-<!--            let last = pageGroup * showPageCnt; // 화면에 보여질 페이지 그룹의 마지막 숫자-->
-<!--            if (last > totalPage) { // 페이지 그룹의 마지막 숫자가 전체 페이지 숫자 보다 클 경우 last = totalPage-->
-<!--                last = totalPage;-->
-<!--            }-->
-<!--            let first = last - (showPageCnt - 1) <= 0 ? 1 : last - (showPageCnt - 1); // 화면에 보여질 페이지 그룹의 첫번째 숫자-->
-<!--            let next = last + 1; // 다음 페이지 그룹-->
-<!--            let prev = first - 1; // 이전 페이지 그룹-->
-
-<!--            const pages = $("#pages");-->
-<!--            pages.empty();-->
-<!--            if (first > 5)-->
-<!--        }-->
-
-<!--    </script>-->
-
-<!--    <script>-->
-<!--        document.addEventListener("DOMContentLoaded", function () {-->
-<!--            fetch("admin_main.html")-->
-<!--                .then(response => response.text())-->
-<!--                .then(data => {-->
-<!--                    document.getElementById('header').innerHTML = data;-->
-<!--                })-->
-<!--                .catch(error => console.error('파일을 로드하는 중 오류가 발생하였습니다.', error));-->
-<!--        });-->
-<!--    </script>-->
 </body>
 </html>

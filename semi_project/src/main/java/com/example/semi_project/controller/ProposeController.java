@@ -35,14 +35,16 @@ public class ProposeController {
     }
 
     @GetMapping("/selectPropose")
-    public ModelAndView selectPropose(ModelAndView mv, @RequestParam int proposeCode, @RequestParam String proposeName){
+    public ModelAndView selectPropose(ModelAndView mv, @RequestParam int proposeCode, @RequestParam String proposeName, @RequestParam String proposeContent){
         System.out.println("proposeCode : " + proposeCode);
         System.out.println("proposeName : " + proposeName);
+        System.out.println("proposeContent : " + proposeContent);
         ProposeAnswerDTO answer = proposeService.proposeAnswer(proposeCode, proposeName);
 //        System.out.println(answer.toString());
 
         mv.addObject("proposeCode", proposeCode);
         mv.addObject("proposeName", proposeName);
+        mv.addObject("proposeContent", proposeContent);
         mv.addObject("answer", answer);
         mv.setViewName("admin_propose_answer");
 

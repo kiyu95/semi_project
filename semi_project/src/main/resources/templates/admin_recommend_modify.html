@@ -21,32 +21,42 @@
     <div th:insert="~{/admin_main.html :: mainFragment}"></div>
 
     <div class="content">
-        <div class="recommend-regist">
-            <div class="recommend-regist-title-box">
-                <div class="recommend-regist-title-name-box">
-                    <span class="recommend-regist-title-name">추천문구 등록</span>
+        <div class="recommend-modify">
+
+            <!-- 타이틀 -->
+            <div class="recommend-modify-title-box">
+                <div class="recommend-modify-title-name-box">
+                    <span class="recommend-modify-title-name">추천문구 수정</span>
                 </div>
             </div>
 
-            <form name="recommendForm" action="/recommend/registRecommend" method="post" autocomplete="off">
+            <form name="modifyForm" action="/recommend/modify" method="post" autocomplete="off">
+                <input type="hidden" name="recommendCode" th:value="${recommendCode}"/>
+
+                <!-- 추천문구 키워드 -->
                 <div class="recommend-select-category-box">
-                    <div class="recommend-regist-category">카테고리</div>
+                    <div class="recommend-modify-box">카테고리</div>
                     <select name="categoryCode" class="recommend-select-category">
+                        <option th:value="${categoryCode}" th:text="${category}"></option>
                         <option value="1">책임</option>
                         <option value="2">성실</option>
                         <option value="3">도움</option>
                     </select>
                 </div>
 
-                <div class="recommend-regist-content-box">
-                    <div class="recommend-regist-content">추천문구</div>
-                    <input type="text" name="content" class="recommend-regist-content-input"/>
+                <!-- 추천문구 내용 -->
+                <div class="recommend-modify-content-box">
+                    <div class="recommend-modify-content">추천문구</div>
+                    <textarea name="content" class="recommend-modify-content-input">[[${content}]]</textarea>
+                    <!--                    <input type="text" name="content" class="recommend-modify-content-input" th:value="${content}"/>-->
                 </div>
 
-                <button type="button" class="recommend-regist-btn" onclick="btn()">등록하기</button>
+                <button type="button" class="recommend-modify-btn" onclick="btn()">수정하기</button>
+
             </form>
 
         </div>
+
     </div>
 
     <script>
@@ -58,19 +68,17 @@
             };
         }, true);
 
-
         /* 등록버튼 누를 시 alert */
         function btn() {
-            if (recommendForm.content.value === "") {
-                recommendForm.content.focus();
+            if (modifyForm.content.value === "") {
+                modiftForm.content.focus();
                 alert("내용을 입력해주세요.")
                 return false;
             } else {
-                recommendForm.submit();
-                alert("추천문구를 등록하였습니다.")
+                modifyForm.submit();
+                alert("추천문구를 수정하였습니다.")
             }
         }
     </script>
-
 </body>
 </html>

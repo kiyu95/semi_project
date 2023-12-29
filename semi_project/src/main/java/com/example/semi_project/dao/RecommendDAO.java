@@ -12,4 +12,8 @@ public interface RecommendDAO {
     List<RecommendSelectDTO> selectAllRecommend(String criteria, String keyword);
 
     int registRecommend(int categoryCode, String content);
+
+    int deleteRecommend(String[] selectedRecommendCodeList);
+
+    int modifyRecommend(int recommendCode, int categoryCode, String content);
 }

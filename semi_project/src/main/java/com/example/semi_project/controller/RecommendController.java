@@ -24,6 +24,7 @@ public class RecommendController {
     public ModelAndView selectAllRecommend(ModelAndView mv) {
 
         List<RecommendSelectDTO> recommendList = recommendService.selectAllRecommend();
+        System.out.println(recommendList.toString());
 
         if (Objects.isNull(recommendList)) {
             System.out.println("등록된 추천문구가 없습니다.");
@@ -36,11 +37,11 @@ public class RecommendController {
 
     @PostMapping("/search")
     public ModelAndView search(ModelAndView mv, @RequestParam String criteria, @RequestParam String keyword) {
-        System.out.println("criteria : " + criteria);
-        System.out.println("keyword : " + keyword);
+//        System.out.println("criteria : " + criteria);
+//        System.out.println("keyword : " + keyword);
 
         List<RecommendSelectDTO> recommendList = recommendService.selectAllRecommend(criteria, keyword);
-        System.out.println(recommendList.toString());
+//        System.out.println(recommendList.toString());
 
         if (Objects.isNull(recommendList)) {
             System.out.println("검색 결과가 없습니다.");
@@ -58,8 +59,8 @@ public class RecommendController {
 
     @PostMapping("/registRecommend")
     public ModelAndView registRecommned(ModelAndView mv, @RequestParam int categoryCode, @RequestParam String content) {
-        System.out.println("categoryCode : " + categoryCode);
-        System.out.println("content : " + content);
+//        System.out.println("categoryCode : " + categoryCode);
+//        System.out.println("content : " + content);
 
         int result = recommendService.registRecommend(categoryCode, content);
 
@@ -76,4 +77,56 @@ public class RecommendController {
         return mv;
     }
 
+    @PostMapping("/delete")
+    public ModelAndView deleteRecommend(ModelAndView mv, @RequestParam String selectedRecommendCodes) {
+
+        String[] selectedRecommendCodeList = selectedRecommendCodes.split(",");
+
+        int result = recommendService.deleteRecommend(selectedRecommendCodeList);
+
+        if (result > 0) {
+            List<RecommendSelectDTO> recommendList = recommendService.selectAllRecommend();
+
+            if (Objects.isNull(recommendList)) {
+                System.out.println("등록된 추천문구가 없습니다.");
+            }
+            mv.addObject("recommendList", recommendList);
+            mv.setViewName("admin_recommend");
+        }
+        return mv;
+    }
+
+    @GetMapping("/selectRecommend")
+    public ModelAndView selectRecommend(ModelAndView mv, @RequestParam int recommendCode, @RequestParam int categoryCode, @RequestParam String category, @RequestParam String content) {
+//        System.out.println("recommendCode : " + recommendCode);
+//        System.out.println("categoryCode : " + categoryCode);
+//        System.out.println("category : " + category);
+//        System.out.println("content : " + content);
+
+        mv.addObject("recommendCode", recommendCode);
+        mv.addObject("categoryCode", categoryCode);
+        mv.addObject("category", category);
+        mv.addObject("content", content);
+        mv.setViewName("admin_recommend_modify");
+
+        return mv;
+
+    }
+
+    @PostMapping("/modify")
+    public ModelAndView modifyRecommend(ModelAndView mv, @RequestParam int recommendCode, @RequestParam int categoryCode, @RequestParam String content){
+        System.out.println("recommendCode : " + recommendCode);
+        System.out.println("categoryCode : " + categoryCode);
+        System.out.println("content : " + content);
+
+        int result = recommendService.modifyRecommend(recommendCode, categoryCode, content);
+
+        if (result > 0) {
+            List<RecommendSelectDTO> recommendList = recommendService.selectAllRecommend();
+
+            mv.addObject("recommendList", recommendList);
+            mv.setViewName("admin_recommend");
+        }
+        return mv;
+    }
 }

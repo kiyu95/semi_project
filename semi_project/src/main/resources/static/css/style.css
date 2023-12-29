@@ -817,20 +817,20 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 }
 
 /* ******************** 문의사항 작성하기  ******************** */
-.propose-regist-box {
-    font-family: 'Do Hyeon', sans-serif;
-    background-color: lightskyblue;
-    font-size: 20px;
-    width: 100px;
-    height: 30px;
-    position: absolute;
-    left: 1200px;
-    bottom: 90px;
-    border: 1px solid black;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
+/*.propose-regist-box {*/
+/*    font-family: 'Do Hyeon', sans-serif;*/
+/*    background-color: lightskyblue;*/
+/*    font-size: 20px;*/
+/*    width: 100px;*/
+/*    height: 30px;*/
+/*    position: absolute;*/
+/*    left: 1200px;*/
+/*    bottom: 90px;*/
+/*    border: 1px solid black;*/
+/*    display: inline-flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*}*/
 
 /* ******************** 문의사항 삭제하기  ******************** */
 .propose-delete-box {
@@ -1247,6 +1247,104 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
 }
 
 .recommend-regist-btn {
+    font-family: 'Do Hyeon', sans-serif;
+    background-color: lightskyblue;
+    font-size: 20px;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    left: 1020px;
+    bottom: 90px;
+    border: 1px solid black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ******************** 추천문구 수정페이지  ******************** */
+.recommend-modify {
+    width: 1440px;
+    height: 900px;
+    background-color: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    overflow: hidden;
+}
+
+.recommend-modify-title-box {
+    width: 100%;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+
+.recommend-modify-title-name-box {
+    width: 200px;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recommend-modify-title-name {
+    font-size: 30px;
+    color: #17A1FA;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    opacity: 1;
+}
+
+.recommend-modify-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100px;
+    position: absolute;
+}
+
+.recommend-modify-content-box {
+    margin: 0 20px 20px 20px;
+    border-collapse: collapse;
+    font-size: 24px;
+    width: 1400px;
+    height: 550px;
+    opacity: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.recommend-modify-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100px;
+    position: absolute;
+}
+
+.recommend-modify-content-input {
+    padding: 10px;
+    left: 100px;
+    width: 1000px;
+    height: 550px;
+    font-size: 24px;
+    position: absolute;
+}
+
+.recommend-modify-btn {
     font-family: 'Do Hyeon', sans-serif;
     background-color: lightskyblue;
     font-size: 20px;
