@@ -5,19 +5,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/login")
 public class LoginController {
 
+    @GetMapping("/adminLoginPage")
+    public String adminlogin() {
+        return "/admin/admin_login";
+    }
+
     @GetMapping("/adminLogin")
     public String login(){
-        return "admin_home";
+        return "/admin/admin_home";
     }
 
     @PostMapping("/adminLogin")
     public String login(LoginDTO loginDTO) {
-        return "admin_home";
+        return "/admin/admin_home";
     }
 }

@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.semi_project.dao.ProposeDAO">
+<mapper namespace="com.example.semi_project.dao.AdminProposeDAO">
 
     <resultMap id="proposeResult" type="com.example.semi_project.dto.ProposeSelectDTO">
         <id property="code" column="PROPOSE_CODE"/>

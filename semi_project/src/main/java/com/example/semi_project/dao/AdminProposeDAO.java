@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
 @Mapper
-public interface ProposeDAO {
+public interface AdminProposeDAO {
     List<ProposeSelectDTO> selectAllPropose();
 
     ProposeAnswerDTO proposeAnswer(int proposeCode, String proposeName);
@@ -16,5 +16,5 @@ public interface ProposeDAO {
 
     int deletePropose(String[] selectedProposeCodeList);
 
-    List<ProposeSelectDTO> selectAllPropose(String keyword);
+    List<ProposeSelectDTO> selectAllPropose(String criteria, String keyword);
 }

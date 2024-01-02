@@ -30,7 +30,7 @@ public class ProposeController {
         }
 
         mv.addObject("proposeList", proposeList);
-        mv.setViewName("admin_propose");
+        mv.setViewName("/admin/admin_propose");
         return mv;
     }
 
@@ -46,7 +46,7 @@ public class ProposeController {
         mv.addObject("proposeName", proposeName);
         mv.addObject("proposeContent", proposeContent);
         mv.addObject("answer", answer);
-        mv.setViewName("admin_propose_answer");
+        mv.setViewName("/admin/admin_propose_answer");
 
         return mv;
     }
@@ -65,7 +65,7 @@ public class ProposeController {
         mv.addObject("proposeCode", proposeCode);
         mv.addObject("proposeName", proposeName);
         mv.addObject("answer", answer);
-        mv.setViewName("admin_propose_answer");
+        mv.setViewName("/admin/admin_propose_answer");
 
         return mv;
     }
@@ -80,21 +80,21 @@ public class ProposeController {
         List<ProposeSelectDTO> proposeList = proposeService.selectAllPropose();
 
         mv.addObject("proposeList", proposeList);
-        mv.setViewName("admin_propose");
+        mv.setViewName("/admin/admin_propose");
         return mv;
     }
 
     @PostMapping("/searchPropose")
-    public ModelAndView searchPropose(ModelAndView mv, @RequestParam String keyword) {
+    public ModelAndView searchPropose(ModelAndView mv,@RequestParam String criteria, @RequestParam String keyword) {
 
-        List<ProposeSelectDTO> proposeList = proposeService.selectAllPropose(keyword);
+        List<ProposeSelectDTO> proposeList = proposeService.selectAllPropose(criteria, keyword);
 
         if (Objects.isNull(proposeList)) {
             System.out.println("검색 결과가 없습니다");
         }
 
         mv.addObject("proposeList", proposeList);
-        mv.setViewName("admin_propose");
+        mv.setViewName("/admin/admin_propose");
         return mv;
     }
 

@@ -10,6 +10,6 @@ public class DashBoardController {
 
     @GetMapping("/home")
     public String home() {
-        return "admin_dashBoard";
+        return "/admin/admin_dashBoard";
     }
 }

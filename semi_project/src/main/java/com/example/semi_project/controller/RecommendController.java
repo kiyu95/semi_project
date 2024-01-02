@@ -31,7 +31,7 @@ public class RecommendController {
         }
 
         mv.addObject("recommendList", recommendList);
-        mv.setViewName("admin_recommend");
+        mv.setViewName("/admin/admin_recommend");
         return mv;
     }
 
@@ -48,13 +48,13 @@ public class RecommendController {
         }
 
         mv.addObject("recommendList", recommendList);
-        mv.setViewName("admin_recommend");
+        mv.setViewName("/admin/admin_recommend");
         return mv;
     }
 
     @GetMapping("/registPage")
     public String registPage() {
-        return "admin_recommend_regist";
+        return "/admin/admin_recommend_regist";
     }
 
     @PostMapping("/registRecommend")
@@ -71,7 +71,7 @@ public class RecommendController {
                 System.out.println("등록된 추천문구가 없습니다.");
             }
             mv.addObject("recommendList", recommendList);
-            mv.setViewName("admin_recommend");
+            mv.setViewName("/admin/admin_recommend");
         }
 
         return mv;
@@ -91,7 +91,7 @@ public class RecommendController {
                 System.out.println("등록된 추천문구가 없습니다.");
             }
             mv.addObject("recommendList", recommendList);
-            mv.setViewName("admin_recommend");
+            mv.setViewName("/admin/admin_recommend");
         }
         return mv;
     }
@@ -107,7 +107,7 @@ public class RecommendController {
         mv.addObject("categoryCode", categoryCode);
         mv.addObject("category", category);
         mv.addObject("content", content);
-        mv.setViewName("admin_recommend_modify");
+        mv.setViewName("/admin/admin_recommend_modify");
 
         return mv;
 
@@ -115,9 +115,9 @@ public class RecommendController {
 
     @PostMapping("/modify")
     public ModelAndView modifyRecommend(ModelAndView mv, @RequestParam int recommendCode, @RequestParam int categoryCode, @RequestParam String content){
-        System.out.println("recommendCode : " + recommendCode);
-        System.out.println("categoryCode : " + categoryCode);
-        System.out.println("content : " + content);
+//        System.out.println("recommendCode : " + recommendCode);
+//        System.out.println("categoryCode : " + categoryCode);
+//        System.out.println("content : " + content);
 
         int result = recommendService.modifyRecommend(recommendCode, categoryCode, content);
 
@@ -125,7 +125,7 @@ public class RecommendController {
             List<RecommendSelectDTO> recommendList = recommendService.selectAllRecommend();
 
             mv.addObject("recommendList", recommendList);
-            mv.setViewName("admin_recommend");
+            mv.setViewName("/admin/admin_recommend");
         }
         return mv;
     }
