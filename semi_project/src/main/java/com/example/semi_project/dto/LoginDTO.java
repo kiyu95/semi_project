@@ -2,12 +2,9 @@ package com.example.semi_project.dto;
 
 public class LoginDTO {
     private String id;
-    private int pass;
+    private String pass;
 
-    public LoginDTO() {
-    }
-
-    public LoginDTO(String id, int pass) {
+    public LoginDTO(String id, String pass) {
         this.id = id;
         this.pass = pass;
     }
@@ -20,11 +17,11 @@ public class LoginDTO {
         this.id = id;
     }
 
-    public int getPass() {
+    public String getPass() {
         return pass;
     }
 
-    public void setPass(int pass) {
+    public void setPass(String pass) {
         this.pass = pass;
     }
 
@@ -32,7 +29,7 @@ public class LoginDTO {
     public String toString() {
         return "LoginDTO{" +
                 "id='" + id + '\'' +
-                ", pass=" + pass +
+                ", pass='" + pass + '\'' +
                 '}';
     }
 }
