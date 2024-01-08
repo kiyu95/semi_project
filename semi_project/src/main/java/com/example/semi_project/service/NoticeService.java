@@ -2,10 +2,8 @@ package com.example.semi_project.service;
 
 import com.example.semi_project.dao.NoticeDAO;
 import com.example.semi_project.dto.NoticeSelectDTO;
-import com.example.semi_project.dto.SearchNoticeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Objects;
@@ -18,17 +16,16 @@ public class NoticeService {
 
     public List<NoticeSelectDTO> selectAllNotice() {
         List<NoticeSelectDTO> noticeList = noticeDAO.selectAllNotice(); // notice를 List형으로 꺼내옴
-
         if (Objects.isNull(noticeList)) { // noticeDAO.selectAllNotice() 에서 반환된 값이 없을 경우
             System.out.println("등록된 공지사항이 없습니다.");
         }
         return noticeList; // noticeDAO.selectALLNotice() 에서 반환된 값 반환
     }
 
-    public List<SearchNoticeDTO> searchNotice(String keyword) {
-        List<SearchNoticeDTO> searchNotice = noticeDAO.searchNotice(keyword);
+    public List<NoticeSelectDTO> searchNotice(String criteria, String keyword) {
+        List<NoticeSelectDTO> noticeList = noticeDAO.searchNotice(criteria, keyword);
 
-        return searchNotice;
+        return noticeList;
     }
 
     public int deleteSelectedNotices(String[] selectedNoticeCodeList) {
@@ -41,6 +38,12 @@ public class NoticeService {
 
     public int registNotice(String name, String content) {
         int result = noticeDAO.registNotice(name, content);
+
+        return result;
+    }
+
+    public int modifyNotice(int noticeCode, String name, String content) {
+        int result = noticeDAO.modifyNotice(noticeCode, name, content);
 
         return result;
     }
